@@ -21,9 +21,8 @@ const languages = [
 const Header = () => (
   <header className={styles.headerCont} >
     <img
+      className={styles.logo}
       alt="Anoty logo"
-      height={64}
-      style={{ margin: 0 }}
       src={logo}
     />
     <select>

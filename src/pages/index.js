@@ -1,10 +1,10 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-import Header from '../components/header'
 import Layout from "../components/layout"
+import Form from "../components/form"
 import Seo from "../components/seo"
-import * as styles from "../components/index.module.css"
+import * as styles from "./index.module.css"
 
 const links = [
   {
@@ -70,10 +70,13 @@ const moreLinks = [
 const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
 
 const IndexPage = () => (
-  <div className={styles.page}>
-    <Header />
-   <Layout></Layout>
-  </div>
+  <>
+   <Layout>
+    <Form />
+    info
+    footer
+   </Layout>
+  </>
 
 )
 

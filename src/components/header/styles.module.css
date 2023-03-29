@@ -1,8 +1,12 @@
 .headerCont{
-    background-color: grey;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    background-color: white;
+    justify-content: space-around;
     align-items: center;
-    padding: 0 10%;
     position: fixed;
+    top: 0;
+}
+.logo{
+    height:64px;
 }
