@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "engines": {
     "node": "18.x"
-  }
+  };
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "gatsby": "^5.8.0",
