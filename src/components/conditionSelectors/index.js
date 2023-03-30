@@ -167,7 +167,7 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
         }
     }
     function changeCategory(category){
-        selectCategory(category.value)
+        selectCategory(category?.value || '')
     }
     function changeAddInfo(info){
         selectAdditionalInfo(info.map(info=>info.value))

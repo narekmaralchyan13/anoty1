@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ConditionsSelect from '../conditionSelectors'
 import DateSeletcor from '../dateSelector'
 import FormHeader from '../fromHeader'
@@ -17,6 +17,12 @@ const Form = () => {
     phone: "",
     message: ""
   })
+  const [disable,setDisable] = useState(true)
+
+  useEffect(()=>{
+    console.log('EFFECT');
+    setDisable( !(state.day && state.category))
+  },[state.day,state.category])
 
   function changeState(key, value) {
     setState(prev => {
@@ -55,7 +61,6 @@ const Form = () => {
     e.preventDefault();
   }
 
-  const btnActive = state.day && state.category
 
   return (
     <form className={styles.form} onSubmit={sendRequest} >
@@ -73,7 +78,7 @@ const Form = () => {
       />
       <button
         className={styles.sendBtn}
-        disabled={!btnActive}
+        disabled={disable}
       >
         Send request
       </button>

@@ -113,7 +113,7 @@ const DateSeletcor = ({selectTime,selectDay,selectTimeMode}) => {
                                 return <span
                                     className={time.selected ? styles.selectedTime : styles.time}
                                     key={time.value}
-                                    onClick={() => { selectTime(time.value) }}
+                                    onClick={() => { changeTime(time.value) }}
                                 >
                                     {time.value}
                                 </span>
