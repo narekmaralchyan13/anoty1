@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import Form from "../components/form"
 import Seo from "../components/seo"
 import * as styles from "./index.module.css"
+import About from "../components/about"
 
 const links = [
   {
@@ -73,7 +74,7 @@ const IndexPage = () => (
   <>
    <Layout>
     <Form />
-    info
+    <About />
     footer
    </Layout>
   </>

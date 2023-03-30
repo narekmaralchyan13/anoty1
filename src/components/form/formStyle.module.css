@@ -28,6 +28,7 @@ line-height: 36px;
 color: #FFFFFF;
 border: none;
 cursor: pointer;
+margin-bottom: 130px;
 }
 .sendBtn:disabled{
   background-color: #e69073;
