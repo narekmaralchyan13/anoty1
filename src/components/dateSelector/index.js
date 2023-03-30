@@ -78,7 +78,7 @@ const DateSelecor = () => {
             <div className={styles.timeContainer}>
                 <div className={styles.timeHead}>
                     <span className={styles.inputName}>Time*</span>
-                    <select name='timePeriod'>
+                    <select name='timePeriod' className={styles.timePeriod}>
                         <option value='PM'>PM</option>
                         <option value='AM'>AM</option>
                     </select>
