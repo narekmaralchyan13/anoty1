@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import * as styles from './dateSelector.module.css'
+import SelectContainer from './../form/components/selectContainer'
 
 const times = [
     {
@@ -51,7 +52,7 @@ const times = [
     },
 ]
 
-const DateSelecor = () => {
+const DateSeletcor = () => {
 
     const [timesState, setTimesState] = useState(times)
 
@@ -70,8 +71,8 @@ const DateSelecor = () => {
         })
     }
     return (
-        <div className={styles.DateSelecor}>
-            <div className={styles.container}>
+        <SelectContainer>
+            <div className={styles.dayContainer}>
                 <span className={styles.inputName}>Date *</span>
                 <input type='date' />
             </div>
@@ -112,8 +113,8 @@ const DateSelecor = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </SelectContainer>
     )
 }
 
-export default DateSelecor
+export default DateSeletcor

@@ -1,0 +1,80 @@
+.selects {
+    width: 30%;
+    min-width: 290px;
+    height: 68px;
+    background-color: #EFF3F5;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+
+.inputName {
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 36px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+.guests{
+    padding: 6px ;
+    background-color: white;
+    border: 1px solid #C2C1C1;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    font-size: 24px;
+
+
+}
+.guestsNumber{
+    width: 20px ;
+    border: none;
+    outline: none;
+    font-family: Cabin;
+    font-size: 16px !important;
+    text-align: center;
+}
+.guestsNumber::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .btn{
+    cursor: pointer;
+  }
+
+.categories{
+    width: 100%;
+    border: none;
+    outline: none;
+}
+.prices{
+    display: flex;
+    gap: 24px;
+}
+.price{
+    height: 36px;
+    border-radius: 8px;
+    padding: 0 15px;
+    background-color: white;
+    border: 1px solid #C2C1C1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.selectedPrice{
+    height: 36px;
+    border-radius: 8px;
+    padding: 0 15px;
+    background-color: #FFC629;
+    border: 1px solid #FFC629;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
