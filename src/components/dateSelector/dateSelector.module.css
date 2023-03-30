@@ -1,7 +1,7 @@
 
 .dayContainer {
     min-width: 290px;
-    width: 30%;
+    width: 25%;
     height: 148px;
     padding: 16px;
     background-color: #EFF3F5;
@@ -12,7 +12,7 @@
 }
 .timeContainer{
     min-width: 290px;
-    width: 30%;
+    width: 25%;
     height: 148px;
     padding: 16px;
     background-color: #EFF3F5;

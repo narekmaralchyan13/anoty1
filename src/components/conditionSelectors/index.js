@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import SelectContainer from '../form/components/selectContainer'
 import * as styles from './conditions.module.css'
 import CreatableSelect from 'react-select/creatable';
+import Select from 'react-select/creatable';
 import dollarIcon from './../../images/dollar.svg'
 
 
-const options = [
-    { value: 'Restaurant', label: 'Restaurant', color: "red" },
+const categoriesOptions = [
+    { value: 'Restaurant', label: 'Restaurant' },
     { value: 'Cafe', label: 'Cafe' },
     { value: 'Club', label: 'Club' },
     { value: 'Pub', label: 'Pub' },
@@ -16,6 +17,13 @@ const options = [
     { value: 'Kids', label: 'Kids' },
     { value: '', label: '+ Type for add other', isDisabled: true }
 ];
+const additionalOptions = [
+    { value: 'None smoking', label: 'None smoking' },
+    { value: 'Parking', label: 'Parking' },
+    { value: 'Late closing', label: 'Late closing' },
+    { value: 'Open-Air', label: 'Open-Air' },
+    { value: '', label: '+ Type for add other', isDisabled: true }
+]
 
 const customStyles = {
     control: (base, state) => ({
@@ -60,28 +68,63 @@ const customStyles = {
         ...base,
         backgroundColor: '#EFF3F5',
     }),
+    multiValue: (base, state) => ({
+        backgroundColor: '#565656',
+        color: 'white',
+        borderRadius: '20px',
+        display: 'flex',
+        padding: '0 6px',
+        display: 'flex',
+        justifayContent: "space-between",
+        alignItems: 'center'
+    }),
+    multiValueLabel: (base, state) => ({
+        fontSize: '70%',
+        fontWeight: '400',
+        fontFamily: 'Montserrat',
+        color: 'white',
+        lineHeight: '36px',
+
+    }),
+    multiValueRemove: (base, state) => ({
+        color: '#565656',
+        backgroundColor: 'white',
+        borderRadius: '50%',
+        width: '16px',
+        height: '16px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: '-4px',
+        marginLeft: '4px',
+        '&:hover': {
+            backgroundColor: '#d9d9d9',
+            cursor: 'pointer',
+        },
+    }),
+
 };
 
 const pricesData = [
     {
         value: "low",
-        content: <img src={dollarIcon} alt='priceIcon'/>,
+        content: <img src={dollarIcon} alt='priceIcon' />,
         selected: false,
     },
     {
         value: "normal",
         content: <>
-            <img src={dollarIcon} alt='priceIcon'/>
-            <img src={dollarIcon} alt='priceIcon'/>
+            <img src={dollarIcon} alt='priceIcon' />
+            <img src={dollarIcon} alt='priceIcon' />
         </>,
         selected: true,
     },
     {
         value: "high",
         content: <>
-            <img src={dollarIcon} alt='priceIcon'/>
-            <img src={dollarIcon} alt='priceIcon'/>
-            <img src={dollarIcon} alt='priceIcon'/>
+            <img src={dollarIcon} alt='priceIcon' />
+            <img src={dollarIcon} alt='priceIcon' />
+            <img src={dollarIcon} alt='priceIcon' />
         </>,
         selected: false,
     },
@@ -89,18 +132,18 @@ const pricesData = [
 
 
 const ConditionsSelect = () => {
-    const [prices,setPrices] = useState(pricesData)
+    const [prices, setPrices] = useState(pricesData)
 
-    function changePrice(price){
-        setPrices(prev=>{
-            return prev.map(item=>{
-                if(item.value===price) return {
+    function changePrice(price) {
+        setPrices(prev => {
+            return prev.map(item => {
+                if (item.value === price) return {
                     ...item,
-                    selected:true
+                    selected: true
                 }
                 return {
                     ...item,
-                    selected:false
+                    selected: false
                 }
             })
         })
@@ -120,7 +163,7 @@ const ConditionsSelect = () => {
                 <div className={styles.selects}>
                     <CreatableSelect
                         name='Category'
-                        options={options}
+                        options={categoriesOptions}
                         isClearable
                         placeholder="Create or select category*"
                         className={styles.categories}
@@ -133,29 +176,22 @@ const ConditionsSelect = () => {
                     <span className={styles.inputName}>Select Price*</span>
                     <div className={styles.prices}>
                         {
-                            prices.map(item=>{
-                                return <div className={item.selected ?styles.selectedPrice : styles.price} onClick={()=>{changePrice(item.value)}}>
+                            prices.map(item => {
+                                return <div className={item.selected ? styles.selectedPrice : styles.price} onClick={() => { changePrice(item.value) }}>
                                     {item.content}
                                 </div>
                             })
                         }
-
-                        {/* <div className={styles.price}>
-                            <img src={dollarIcon} />
-                        </div>
-                        <div className={styles.price}>
-                            <img src={dollarIcon} />
-                            <img src={dollarIcon} />
-                        </div>
-                        <div className={styles.price}>
-                            <img src={dollarIcon} />
-                            <img src={dollarIcon} />
-                            <img src={dollarIcon} />
-                        </div> */}
                     </div>
                 </div>
                 <div className={styles.selects}>
-                    <span className={styles.inputName}>Additional requirements</span>
+                    <Select
+                        styles={customStyles}
+                        className={styles.categories}
+                        placeholder='Additional requirements'
+                        isMulti
+                        options={additionalOptions}
+                    />
                 </div>
 
             </SelectContainer>
