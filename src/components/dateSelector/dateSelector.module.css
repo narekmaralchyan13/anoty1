@@ -1,0 +1,79 @@
+.DateSelecor{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap:24px;
+}
+.container {
+    min-width: 290px;
+    width: 30%;
+    height: 148px;
+    padding: 16px;
+    background-color: #EFF3F5;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+.timeContainer{
+    min-width: 290px;
+    width: 30%;
+    height: 148px;
+    padding: 16px;
+    background-color: #EFF3F5;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+}
+.timeHead{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+select{
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 36px;
+    letter-spacing: 0em;
+    text-align: left;
+    border: none;
+}
+.inputName {
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 36px;
+}
+.timeBody{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.timeBodySlice{
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+.time{
+    width:14% ;
+    text-align: center;
+    background-color: white;
+    padding: 8px 0px;
+    border:1px solid #C2C1C1 ;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.selectedTime{
+    width:14% ;
+    text-align: center;
+    background-color: white;
+    padding: 8px 0px;
+    border:1px solid #C2C1C1 ;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color:#FFC629 ;
+    border:1px solid #FFC629 ;
+}

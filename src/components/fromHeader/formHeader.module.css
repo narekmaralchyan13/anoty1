@@ -1,7 +1,10 @@
 .formHeader{
-    width: 650px;
+    width: 45%;
+    min-width: 500px;
+
 }
 .headerText{
+    width: 100%;
 font-family: 'Titan One';
 font-size: 64px;
 font-weight: 400;
@@ -10,8 +13,9 @@ letter-spacing: 0em;
 text-align: left;
 }
 .infoText{
-padding-top: 19px;
-padding-bottom: 19px;
+height: 90px;
+white-space: nowrap;
+width: 100%;
 font-family: Montserrat;
 font-size: 32px;
 font-weight: 400;
@@ -19,4 +23,6 @@ line-height: 48px;
 letter-spacing: 0em;
 text-align: center;
 background-image: url(../../images/textBackground.jpg);
+background-repeat: no-repeat;
+background-size: 100%;
 }
