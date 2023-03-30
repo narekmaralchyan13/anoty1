@@ -131,8 +131,9 @@ const pricesData = [
 ]
 
 
-const ConditionsSelect = () => {
+const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditionalInfo}) => {
     const [prices, setPrices] = useState(pricesData)
+    const [guests,setGuests] = useState(1)
 
     function changePrice(price) {
         setPrices(prev => {
@@ -147,7 +148,31 @@ const ConditionsSelect = () => {
                 }
             })
         })
+        selectPrice(price)
     }
+    function changeGuests(evt){
+        if(evt.target.value >= 0){
+            setGuests(evt.target.value)
+            selectGuests(evt.target.value)
+        }
+    }
+    function incrGuests(){
+        setGuests(prev=>++prev)
+        selectGuests(guests+1)
+    }
+    function decGuests(){
+        if(guests>0)  {
+            setGuests(prev=>--prev);
+            selectGuests(guests-1)
+        }
+    }
+    function changeCategory(category){
+        selectCategory(category.value)
+    }
+    function changeAddInfo(info){
+        selectAdditionalInfo(info.map(info=>info.value))
+    }
+
 
     return (
         <>
@@ -155,14 +180,15 @@ const ConditionsSelect = () => {
                 <div className={styles.selects}>
                     <span className={styles.inputName}>Guests*</span>
                     <div className={styles.guests}>
-                        <span className={styles.btn}>-</span>
-                        <input type='number' min='1' defaultValue='1' className={styles.guestsNumber} />
-                        <span className={styles.btn}>+</span>
+                        <span className={styles.btn} onClick={decGuests}>-</span>
+                        <input type='number' min='0' value={guests} className={styles.guestsNumber} onChange={changeGuests}  />
+                        <span className={styles.btn} onClick={incrGuests}>+</span>
                     </div>
                 </div>
                 <div className={styles.selects}>
                     <CreatableSelect
-                        name='Category'
+                        onChange={changeCategory}
+                        name='category'
                         options={categoriesOptions}
                         isClearable
                         placeholder="Create or select category*"
@@ -186,6 +212,7 @@ const ConditionsSelect = () => {
                 </div>
                 <div className={styles.selects}>
                     <Select
+                        onChange={changeAddInfo}
                         styles={customStyles}
                         className={styles.categories}
                         placeholder='Additional requirements'
