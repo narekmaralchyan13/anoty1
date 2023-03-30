@@ -1,11 +1,11 @@
 import React from 'react'
+import FormHeader from '../fromHeader'
 import * as styles from './formStyle.module.css'
-import image from './../../images/background.jpg'
 
 const Form = () => {
   return (
     <form className={styles.form} >
-      <div>Form Header</div>
+      <FormHeader />
       <div>
           <div>date time</div>
           <div>guests category</div>
