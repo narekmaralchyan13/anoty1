@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SelectContainer from '../form/components/selectContainer'
 import * as styles from './conditions.module.css'
 import CreatableSelect from 'react-select/creatable';
@@ -135,6 +135,10 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
     const [prices, setPrices] = useState(pricesData)
     const [guests,setGuests] = useState(1)
 
+    useEffect(()=>{
+        selectGuests(guests)
+    },[guests])
+
     function changePrice(price) {
         setPrices(prev => {
             return prev.map(item => {
@@ -153,17 +157,14 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
     function changeGuests(evt){
         if(evt.target.value >= 0){
             setGuests(evt.target.value)
-            selectGuests(evt.target.value)
         }
     }
     function incrGuests(){
         setGuests(prev=>++prev)
-        selectGuests(guests+1)
     }
     function decGuests(){
         if(guests>0)  {
             setGuests(prev=>--prev);
-            selectGuests(guests-1)
         }
     }
     function changeCategory(category){
@@ -203,7 +204,7 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
                     <div className={styles.prices}>
                         {
                             prices.map(item => {
-                                return <div className={item.selected ? styles.selectedPrice : styles.price} onClick={() => { changePrice(item.value) }}>
+                                return <div className={item.selected ? styles.selectedPrice : styles.price} key={item.value} onClick={() => { changePrice(item.value) }}>
                                     {item.content}
                                 </div>
                             })

@@ -28,7 +28,7 @@ const Header = () => (
     <select>
       {
         languages.map(language => {
-          return <option value={language.value} >
+          return <option value={language.value} key={language.value} >
             {/* <img
               height={16}
               width={16} 

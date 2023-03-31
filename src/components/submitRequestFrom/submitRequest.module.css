@@ -1,0 +1,91 @@
+.modalContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 4px;
+    font-family: 'Montserrat';
+
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 400;
+
+}
+
+.infoText {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.closeBtn {
+    cursor: pointer;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.fieldInput {
+    height: 40px;
+    border: 1px solid #FFC629;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 0 12px;
+    outline: none;
+    font-family: 'Montserrat';
+
+}
+
+.fieldTextArea {
+    height: 80px;
+    border: 1px solid #FFC629;
+    border-radius: 4px;
+    resize: none;
+    outline: none;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Montserrat';
+}
+
+.filedName {
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.btnGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn {
+    padding: 4px 34px;
+    background: #EF4F1C;
+    border-radius: 8px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+}
+.btn:disabled{
+    background-color:#ef511ca2 ;
+    cursor:auto;
+}
+.closeBtn {
+    background: #EFF3F5 !important;
+    color: #171717 !important;
+}

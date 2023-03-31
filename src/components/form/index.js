@@ -2,9 +2,30 @@ import React, { useEffect, useState } from 'react'
 import ConditionsSelect from '../conditionSelectors'
 import DateSeletcor from '../dateSelector'
 import FormHeader from '../fromHeader'
+import SubmitRequestForm from '../submitRequestFrom'
+import Modal from 'react-modal';
 import * as styles from './formStyle.module.css'
 
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    width: '320px',
+    background: 'white',
+
+  },
+  overlay: {
+    background: 'rgba(0, 0, 0, 0.425)',
+
+  }
+};
+
 const Form = () => {
+  
   const [state, setState] = useState({
     day: "",
     time: "7:00",
@@ -13,16 +34,18 @@ const Form = () => {
     category: "",
     price: "normal",
     additionalInfo: "",
-    email: "",
-    phone: "",
-    message: ""
   })
-  const [disable,setDisable] = useState(true)
+  const [disable, setDisable] = useState(true)
+  const [modalIsOpen, setModalIsOpen] = useState(false)
 
-  useEffect(()=>{
-    console.log('EFFECT');
-    setDisable( !(state.day && state.category))
-  },[state.day,state.category])
+  useEffect(() => {
+    setDisable(!(state.day && state.category))
+  }, [state.day, state.category])
+
+  function closeModal(){
+    setModalIsOpen(false)
+  }
+
 
   function changeState(key, value) {
     setState(prev => {
@@ -45,44 +68,62 @@ const Form = () => {
   function selectGuests(guests) {
     changeState('guests', guests)
   }
-  function selectCategory(category){
+  function selectCategory(category) {
     changeState('category', category)
   }
-  function selectPrice(price){
+  function selectPrice(price) {
     changeState('price', price)
   }
-  function selectAdditionalInfo(info){
-    changeState('additionalInfo',info)
+  function selectAdditionalInfo(info) {
+    changeState('additionalInfo', info)
   }
+ 
 
-
-
-  function sendRequest(e) {
+  function openModal(e) {
     e.preventDefault();
+    setModalIsOpen(true)
   }
-
+  function sendEmail(popUpInfo){
+    console.log({
+      ...state,
+      ...popUpInfo
+    });
+    closeModal()
+  }
 
   return (
-    <form className={styles.form} onSubmit={sendRequest} >
-      <FormHeader />
-      <DateSeletcor
-        selectDay={selectDay}
-        selectTime={selectTime}
-        selectTimeMode={selectTimeMode}
-      />
-      <ConditionsSelect
-        selectGuests={selectGuests}
-        selectCategory={selectCategory}
-        selectPrice={selectPrice}
-        selectAdditionalInfo={selectAdditionalInfo}
-      />
-      <button
-        className={styles.sendBtn}
-        disabled={disable}
+    <>
+      <form className={styles.form} onSubmit={openModal} >
+        <FormHeader />
+        <DateSeletcor
+          selectDay={selectDay}
+          selectTime={selectTime}
+          selectTimeMode={selectTimeMode}
+        />
+        <ConditionsSelect
+          selectGuests={selectGuests}
+          selectCategory={selectCategory}
+          selectPrice={selectPrice}
+          selectAdditionalInfo={selectAdditionalInfo}
+        />
+        <div>
+        <button
+          className={styles.sendBtn}
+          disabled={disable}
+          onClick={openModal}
+        >
+          Send request
+        </button>
+        </div>
+      </form>
+      <Modal
+        isOpen={modalIsOpen}
+        style={customStyles}
+        contentLabel="Example Modal"
       >
-        Send request
-      </button>
-    </form>
+        <SubmitRequestForm closeModal={closeModal} sendEmail={sendEmail}/>
+      </Modal>
+    </>
   )
 }
 
