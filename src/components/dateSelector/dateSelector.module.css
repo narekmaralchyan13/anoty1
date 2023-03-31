@@ -10,6 +10,15 @@
     justify-content: space-between;
     align-items: start;
 }
+.dateHeader{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.monthYear{
+    display: flex;
+    gap: 24px;
+}
 .timeContainer{
     min-width: 290px;
     width: 25%;
