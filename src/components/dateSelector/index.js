@@ -1,14 +1,50 @@
 import React, { useEffect, useState } from 'react'
 import * as styles from './dateSelector.module.css'
 import SelectContainer from './../form/components/selectContainer'
-import moment from 'moment'
+import moment, {months} from 'moment'
+import Select from "react-select";
+import CreatableSelect from "react-select/creatable";
+export const MonthOptions = [
+    { value: 1, label: 'Jan' },
+    { value: 2, label: 'Feb' },
+    { value: 3, label: 'Mar' },
+    { value: 4, label: 'Apr' },
+    { value: 5, label: 'May' },
+    { value: 6, label: 'Jun' },
+    { value: 7, label: 'Jul' },
+    { value: 8, label: 'Aug' },
+    { value: 9, label: 'Sep' },
+    { value: 10, label: 'Oct' },
+    { value: 11, label: 'Nov' },
+    { value: 12, label: 'Dec' },
+];
+
+function get5UpcomingYears (){
+    const currentYear = moment().year();
+    const upcomingYears = [];
+
+    for (let i = 0; i < 5; i++) {
+        const year = moment().add(i, 'year').year();
+        upcomingYears.push({
+            label:year,
+            value:year
+        });
+    }
+
+    return upcomingYears;
+
+}
 
 function getDaysInMonth(year, month) {
     const dates = [];
     const date = moment(`${year}-${month}-01`);
   
     while (date.month() === parseInt(month) - 1) {
-      dates.push(date.format('ddd MMM DD YYYY'));
+      // dates.push(date.format('ddd MMM DD YYYY'));
+        dates.push({
+            day:date.format("DD"),
+            weekDay:date.format('ddd')
+        })
       date.add(1, 'day');
     }
   
@@ -66,24 +102,38 @@ const times = [
 ]
 
 const DateSeletcor = ({selectTime,selectDay,selectTimeMode}) => {
-            
-    useEffect(()=>{
-        const years = []
-        const months = moment.months()
-        const currentYear = moment().year()
-        for(let i=0 ; i <5 ; i++){
-            years.push(currentYear+i)
-        }
-      
-        console.log(getDaysInMonth(2023,2))
-        
-    },[])
-    // const [date,setDate] = useState({
-    //     year: ,
-    //     month: ,
-    //     day: 
-    // })
+    const [days,setDays] = useState('')
+    const [date,setDate] = useState({
+        year:'',
+        month:'',
+        day:''
+    })
     const [timesState, setTimesState] = useState(times)
+
+    console.log(date,"date")
+    useEffect(()=>{
+    if(date.month && date.year){
+        console.log(getDaysInMonth(date.year,date.month))
+    }
+    },[date.month,date.year])
+
+    function changeYear(year){
+        setDate(prev=>{
+            return {
+                ...prev,
+                year:year.value
+            }
+        })
+    }
+    function changeMonth(month){
+        setDate(prev=>{
+            return {
+                ...prev,
+                month:month.value
+            }
+        })
+    }
+
 
     function changeTime(time) {
         setTimesState(prev => {
@@ -100,9 +150,7 @@ const DateSeletcor = ({selectTime,selectDay,selectTimeMode}) => {
         })
         selectTime(time)
     }
-    function changeDay(evt){
-        selectDay(evt.target.value);
-    }
+
     function changeTimeMode(evt){
         selectTimeMode(evt.target.value)
     }
@@ -111,19 +159,19 @@ const DateSeletcor = ({selectTime,selectDay,selectTimeMode}) => {
     return (
         <SelectContainer>
             <div className={styles.dayContainer}>
-                {/* <span className={styles.inputName}>Date *</span>
-                <input type='date' onChange={changeDay}  /> */}
                 <div className={styles.dateHeader}>
                     <span className={styles.inputName}>Date *</span>
                     <div className={styles.monthYear}>
-                        <select name='month' className={styles.timePeriod} >
-                            <option value='PM'>PM</option>
-                            <option value='AM'>AM</option>
-                        </select>
-                        <select name='timeMode' className={styles.timePeriod} >
-                            <option value='PM'>PM</option>
-                            <option value='AM'>AM</option>
-                        </select>
+                        <Select
+                            name='month'
+                            onChange={changeMonth}
+                            options={MonthOptions}
+                        />
+                        <Select
+                            name='year'
+                            onChange={changeYear}
+                            options={get5UpcomingYears()}
+                        />
                     </div>
                 </div>
                 <div>
