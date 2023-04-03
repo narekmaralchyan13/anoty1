@@ -6,6 +6,47 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+const customStyles = {
+    control: (base, state) => ({
+        ...base,
+        backgroundColor: 'white',
+        fontFamily: 'Montserrat',
+        fontSize: '16px',
+        fontWeight: '400',
+        letterSpacing: '0em',
+        height:'40px'
+
+    }),
+    option: (base, state) => ({
+        ...base,
+        backgroundColor:  state.isSelected ? "#EFF3F5" :"white",
+        fontFamily: 'Montserrat',
+        color:  "black" ,
+        fontSize: '16px',
+        fontWeight: '400',
+        lineHeight: '24px',
+        letterSpacing: '0em',
+        textAlign: 'left',
+        '&:hover': {
+            backgroundColor: '#EFF3F5',
+        },
+    }),
+    dropdownIndicator: (base, state) => ({
+        ...base,
+        color: 'black',
+        with: '10px',
+        borderRadius: '50%',
+        cursor: 'pointer',
+    }),
+    indicatorSeparator: (base, state) => ({
+        ...base,
+        backgroundColor: 'none',
+    }),
+
+
+};
+
+
 const MonthOptions = [
     { value: 1, label: 'Jan' },
     { value: 2, label: 'Feb' },
@@ -136,12 +177,14 @@ const DaySelector = ({selectDay})=>{
                         name='month'
                         onChange={changeMonth}
                         options={MonthOptions}
+                        styles={customStyles}
                     />
                     <Select
                         placeholder='Year'
                         name='year'
                         onChange={changeYear}
                         options={get5UpcomingYears()}
+                        styles={customStyles}
                     />
                 </div>
             </div>
