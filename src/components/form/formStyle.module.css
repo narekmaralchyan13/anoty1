@@ -24,6 +24,6 @@ cursor: pointer;
 margin-bottom: 130px;
 }
 .sendBtn:disabled{
-  background-color: #e69073;
+  background-color: #C2C1C1;
   cursor: auto;
 }

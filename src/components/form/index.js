@@ -4,6 +4,7 @@ import DateSeletcor from '../dateSelector'
 import FormHeader from '../fromHeader'
 import SubmitRequestForm from '../submitRequestFrom'
 import Modal from 'react-modal';
+import emailjs from '@emailjs/browser';
 import * as styles from './formStyle.module.css'
 
 const customStyles = {
@@ -37,7 +38,7 @@ const Form = () => {
   })
   const [disable, setDisable] = useState(true)
   const [modalIsOpen, setModalIsOpen] = useState(false)
-  console.log(state,"state")
+  const [modalState,setModalState] = useState('idle')
 
   useEffect(() => {
     setDisable(!(state.day && state.category))
@@ -45,6 +46,7 @@ const Form = () => {
 
   function closeModal(){
     setModalIsOpen(false)
+    setModalState('idle')
   }
 
 
@@ -85,11 +87,15 @@ const Form = () => {
     setModalIsOpen(true)
   }
   function sendEmail(popUpInfo){
-    console.log({
-      ...state,
-      ...popUpInfo
-    });
-    closeModal()
+    emailjs.send('service_l91vh88','template_le57tlq',{ ...popUpInfo,...state},'Jy_THQHbbVeM1_fiV')
+        .then(res=>{
+          setModalState('success')
+          console.log(res)
+        })
+        .catch(err=>{
+          setModalState('error')
+          console.log(err)
+        })
   }
 
   return (
@@ -122,7 +128,7 @@ const Form = () => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <SubmitRequestForm closeModal={closeModal} sendEmail={sendEmail}/>
+        <SubmitRequestForm closeModal={closeModal} sendEmail={sendEmail} modalState={modalState}/>
       </Modal>
     </>
   )

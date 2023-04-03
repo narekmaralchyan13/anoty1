@@ -82,10 +82,17 @@
     cursor: pointer;
 }
 .btn:disabled{
-    background-color:#ef511ca2 ;
+    background-color:#C2C1C1 ;
     cursor:auto;
 }
 .closeBtn {
     background: #EFF3F5 !important;
     color: #171717 !important;
+}
+.messageImg{
+    width: auto;
+    padding:0 73px;
+}
+.messageText{
+    text-align: center;
 }

@@ -8,6 +8,7 @@
   },
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "@fontsource/cabin": "^4.5.10",
     "@fontsource/montserrat": "^4.5.14",
     "@fontsource/titan-one": "^4.5.9",
