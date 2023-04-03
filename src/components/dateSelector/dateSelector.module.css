@@ -7,13 +7,38 @@
     background-color: #EFF3F5;
     border-radius: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: start;
+    align-items: center;
+    font-family: 'Montserrat';
 }
 .dateHeader{
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+.days{
+    width: 90%;
+
+}
+.dayItem{
+    height: 60px;
+    width: 80% !important;
+    display: flex !important;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    background-color: #FFFFFF;
+    border: 1px solid #C2C1C1;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.selectedDay{
+    background-color: #FFC629;
+    border: 1px solid #FFC629;
+    cursor: auto;
 }
 .monthYear{
     display: flex;
@@ -30,14 +55,15 @@
     flex-direction: column;
     justify-content: space-around;
     gap:16px;
+    font-family: 'Montserrat';
 }
 .timeHead{
     width: 100%;
     display: flex;
     justify-content: space-between;
+
 }
 .timePeriod{
-    font-family: Montserrat;
     font-size: 24px;
     font-weight: 400;
     line-height: 36px;
@@ -45,9 +71,9 @@
     text-align: left;
     border: none;
     outline: 0;
+
 }
 .inputName {
-font-family: 'Montserrat';
 font-style: normal;
 font-weight: 400;
 font-size: 24px;
@@ -71,7 +97,6 @@ line-height: 36px;
     border:1px solid #C2C1C1 ;
     border-radius: 8px;
     cursor: pointer;
-    font-family: Cabin;
     font-size: 16px;
     line-height: 24px;
 
@@ -79,11 +104,8 @@ line-height: 36px;
 .selectedTime{
     width:14% ;
     text-align: center;
-    background-color: white;
-    border:1px solid #C2C1C1 ;
     border-radius: 8px;
-    padding: 4px 0px;
-    font-family: Cabin;
+    padding: 4px 0;
     font-size: 16px;
     line-height: 24px;
     background-color:#FFC629 ;

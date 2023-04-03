@@ -37,6 +37,7 @@ const Form = () => {
   })
   const [disable, setDisable] = useState(true)
   const [modalIsOpen, setModalIsOpen] = useState(false)
+  console.log(state,"state")
 
   useEffect(() => {
     setDisable(!(state.day && state.category))
