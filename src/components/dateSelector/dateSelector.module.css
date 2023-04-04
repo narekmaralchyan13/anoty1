@@ -1,14 +1,14 @@
 
 .dayContainer {
     min-width: 290px;
-    width: 25%;
-    height: 148px;
+    width: 30%;
     padding: 16px;
     background-color: #EFF3F5;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 16px;
     align-items: center;
     font-family: 'Montserrat';
 }
@@ -16,6 +16,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .days{
     width: 90%;
@@ -41,13 +42,14 @@
     cursor: auto;
 }
 .monthYear{
+    width: 50%;
     display: flex;
-    gap: 24px;
+    justify-content: end;
+    gap: 8px;
 }
 .timeContainer{
     min-width: 290px;
-    width: 25%;
-    height: 148px;
+    width: 30%;
     padding: 16px;
     background-color: #EFF3F5;
     border-radius: 20px;
@@ -61,18 +63,9 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-
+    align-items: center;
 }
-.timePeriod{
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 36px;
-    letter-spacing: 0em;
-    text-align: left;
-    border: none;
-    outline: 0;
 
-}
 .inputName {
 font-style: normal;
 font-weight: 400;
@@ -88,12 +81,12 @@ line-height: 36px;
     display: flex;
     justify-content: space-between;
     gap: 8px;
+    font-family: 'Cabin', sans-serif;
 }
 .time{
-    width:14% ;
+    width: 60px;
     text-align: center;
     background-color: white;
-    padding: 4px 0px;
     border:1px solid #C2C1C1 ;
     border-radius: 8px;
     cursor: pointer;
@@ -102,10 +95,9 @@ line-height: 36px;
 
 }
 .selectedTime{
-    width:14% ;
+    width: 60px;
     text-align: center;
     border-radius: 8px;
-    padding: 4px 0;
     font-size: 16px;
     line-height: 24px;
     background-color:#FFC629 ;

@@ -1,5 +1,7 @@
 import * as styles from "./dateSelector.module.css";
 import React, {useState} from "react";
+import {selectStyles} from "../../styles/selectStyles";
+import Select from "react-select";
 
 
 const times = [
@@ -51,7 +53,16 @@ const times = [
         selected: false,
     },
 ]
-
+const timeModeOptions = [
+    {
+        label:"PM",
+        value:"PM"
+    },
+    {
+        label: "AM",
+        value: "AM"
+    }
+]
 const TimeSelector = ({selectTime,selectTimeMode})=>{
     const [timesState, setTimesState] = useState(times)
 
@@ -71,18 +82,21 @@ const TimeSelector = ({selectTime,selectTimeMode})=>{
         selectTime(time)
     }
 
-    function changeTimeMode(evt){
-        selectTimeMode(evt.target.value)
+    function changeTimeMode(mode){
+        selectTimeMode(mode.value)
     }
 
     return(
         <div className={styles.timeContainer}>
             <div className={styles.timeHead}>
                 <span className={styles.inputName}>Select Time*</span>
-                <select name='timeMode' className={styles.timePeriod} onChange={changeTimeMode}>
-                    <option value='PM'>PM</option>
-                    <option value='AM'>AM</option>
-                </select>
+                <Select
+                    defaultValue={timeModeOptions[0]}
+                    name='timeMode'
+                    onChange={changeTimeMode}
+                    options={timeModeOptions}
+                    styles={selectStyles}
+                />
             </div>
             <div className={styles.timeBody}>
                 <div className={styles.timeBodySlice}>

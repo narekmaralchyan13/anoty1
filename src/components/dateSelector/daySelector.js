@@ -5,47 +5,7 @@ import Select from "react-select";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-const customStyles = {
-    control: (base, state) => ({
-        ...base,
-        backgroundColor: 'white',
-        fontFamily: 'Montserrat',
-        fontSize: '16px',
-        fontWeight: '400',
-        letterSpacing: '0em',
-        height:'40px'
-
-    }),
-    option: (base, state) => ({
-        ...base,
-        backgroundColor:  state.isSelected ? "#EFF3F5" :"white",
-        fontFamily: 'Montserrat',
-        color:  "black" ,
-        fontSize: '16px',
-        fontWeight: '400',
-        lineHeight: '24px',
-        letterSpacing: '0em',
-        textAlign: 'left',
-        '&:hover': {
-            backgroundColor: '#EFF3F5',
-        },
-    }),
-    dropdownIndicator: (base, state) => ({
-        ...base,
-        color: 'black',
-        with: '10px',
-        borderRadius: '50%',
-        cursor: 'pointer',
-    }),
-    indicatorSeparator: (base, state) => ({
-        ...base,
-        backgroundColor: 'none',
-    }),
-
-
-};
-
+import {selectStyles} from "../../styles/selectStyles";
 
 const MonthOptions = [
     { value: 1, label: 'Jan' },
@@ -142,7 +102,7 @@ const DaySelector = ({selectDay})=>{
         })
     }
 
-    const settings = {
+    const sliderSettings = {
         infinite: false,
         slidesToShow: 7,
         slidesToScroll: 7,
@@ -170,28 +130,29 @@ const DaySelector = ({selectDay})=>{
     return(
         <div className={styles.dayContainer}>
             <div className={styles.dateHeader}>
-                <span className={styles.inputName}>Date *</span>
+                <span className={styles.inputName}>Select Date *</span>
                 <div className={styles.monthYear}>
                     <Select
                         placeholder='Month'
                         name='month'
                         onChange={changeMonth}
                         options={MonthOptions}
-                        styles={customStyles}
+                        styles={selectStyles}
                     />
                     <Select
+                        defaultValue={get5UpcomingYears()[0]}
                         placeholder='Year'
                         name='year'
                         onChange={changeYear}
                         options={get5UpcomingYears()}
-                        styles={customStyles}
+                        styles={selectStyles}
                     />
                 </div>
             </div>
             <div className={styles.days}>
                 {
                     days.length ?
-                        <Slider {...settings}>
+                        <Slider {...sliderSettings}>
                             {
                                 days.map(item=>{
                                     return <div key={item.day} className={item.selected ? `${styles.dayItem} ${styles.selectedDay}` : styles.dayItem} onClick={()=>changeDay(item)}>
@@ -200,7 +161,7 @@ const DaySelector = ({selectDay})=>{
                                     </div>
                                 })}
                         </Slider>:
-                        <Slider {...settings}>
+                        <Slider {...sliderSettings}>
                                 <div className={styles.dayItem} ></div>
                                  <div className={styles.dayItem} ></div>
                                  <div className={styles.dayItem} ></div>

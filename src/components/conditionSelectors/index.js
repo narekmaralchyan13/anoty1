@@ -4,9 +4,11 @@ import * as styles from './conditions.module.css'
 import CreatableSelect from 'react-select/creatable';
 import Select from 'react-select/creatable';
 import dollarIcon from './../../images/dollar.svg'
-
+import arrowIcon from './../../images/openOptions.svg';
+import {creatableSelectStyles} from "../../styles/selectStyles";
 
 const categoriesOptions = [
+    { value: '', label: '+ Select or add new one',isDisabled:true },
     { value: 'Restaurant', label: 'Restaurant' },
     { value: 'Cafe', label: 'Cafe' },
     { value: 'Club', label: 'Club' },
@@ -15,96 +17,15 @@ const categoriesOptions = [
     { value: 'WineHouse', label: 'WineHouse' },
     { value: 'Bar', label: 'Bar' },
     { value: 'Kids', label: 'Kids' },
-    { value: '', label: '+ Type for add other', isDisabled: true }
 ];
 const additionalOptions = [
+    { value: '', label: '+ Select or add new one',isDisabled:true },
     { value: 'None smoking', label: 'None smoking' },
     { value: 'Parking', label: 'Parking' },
     { value: 'Late closing', label: 'Late closing' },
     { value: 'Open-Air', label: 'Open-Air' },
-    { value: '', label: '+ Type for add other', isDisabled: true }
+
 ]
-
-const customStyles = {
-    control: (base, state) => ({
-        ...base,
-        backgroundColor: '#EFF3F5',
-        border: 'none',
-        outline: 'none',
-        fontFamily: 'Montserrat',
-        fontSize: '24px',
-        fontWeight: '400',
-        lineHeight: '36px',
-        letterSpacing: '0em',
-        textAlign: 'left',
-        boxShadow: '0',
-
-    }),
-    option: (base, state) => ({
-        ...base,
-        backgroundColor: 'white',
-        fontFamily: 'Montserrat',
-        fontSize: '16px',
-        fontWeight: '400',
-        lineHeight: '24px',
-        letterSpacing: '0em',
-        textAlign: 'left',
-        '&:hover': {
-            backgroundColor: '#EFF3F5',
-        },
-    }),
-    dropdownIndicator: (base, state) => ({
-        ...base,
-        color: 'white',
-        backgroundColor: 'black',
-        with: '10px',
-        borderRadius: '50%',
-        cursor: 'pointer',
-        '&:hover': {
-            color: 'white',
-        },
-    }),
-    indicatorSeparator: (base, state) => ({
-        ...base,
-        backgroundColor: '#EFF3F5',
-    }),
-    multiValue: (base, state) => ({
-        backgroundColor: '#565656',
-        color: 'white',
-        borderRadius: '20px',
-        display: 'flex',
-        padding: '0 6px',
-        display: 'flex',
-        justifayContent: "space-between",
-        alignItems: 'center'
-    }),
-    multiValueLabel: (base, state) => ({
-        fontSize: '70%',
-        fontWeight: '400',
-        fontFamily: 'Montserrat',
-        color: 'white',
-        lineHeight: '36px',
-
-    }),
-    multiValueRemove: (base, state) => ({
-        color: '#565656',
-        backgroundColor: 'white',
-        borderRadius: '50%',
-        width: '16px',
-        height: '16px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: '-4px',
-        marginLeft: '4px',
-        '&:hover': {
-            backgroundColor: '#d9d9d9',
-            cursor: 'pointer',
-        },
-    }),
-
-};
-
 const pricesData = [
     {
         value: "low",
@@ -129,6 +50,7 @@ const pricesData = [
         selected: false,
     },
 ]
+
 
 
 const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditionalInfo}) => {
@@ -194,7 +116,8 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
                         isClearable
                         placeholder="Create or select category*"
                         className={styles.categories}
-                        styles={customStyles}
+                        styles={creatableSelectStyles}
+
                     />
                 </div>
             </SelectContainer>
@@ -214,7 +137,7 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
                 <div className={styles.selects}>
                     <Select
                         onChange={changeAddInfo}
-                        styles={customStyles}
+                        styles={creatableSelectStyles}
                         className={styles.categories}
                         placeholder='Additional requirements'
                         isMulti
