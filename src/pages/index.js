@@ -7,6 +7,7 @@ import Seo from "../components/seo"
 import * as styles from "./index.module.css"
 import About from "../components/about"
 import Footer from "../components/footer";
+import './../18n'
 
 const links = [
   {
@@ -73,11 +74,11 @@ const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=de
 
 const IndexPage = () => (
   <>
-   <Layout>
-    <Form />
-    <About />
-    <Footer />
-   </Layout>
+      <Layout>
+        <Form />
+        <About />
+        <Footer />
+      </Layout>
   </>
 
 )

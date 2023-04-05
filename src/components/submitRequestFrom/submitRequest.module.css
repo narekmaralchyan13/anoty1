@@ -53,7 +53,9 @@
     outline: none;
     font-size: 16px;
     line-height: 24px;
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', serif;
+    padding-left: 8px;
+    padding-top: 8px;
 }
 
 .filedName {
@@ -69,10 +71,11 @@
 }
 
 .btn {
-    padding: 4px 34px;
+    width: 100%;
+    padding: 4px 0px;
     background: #EF4F1C;
     border-radius: 8px;
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -84,6 +87,7 @@
 .btn:disabled{
     background-color:#C2C1C1 ;
     cursor:auto;
+    color:#565656 ;
 }
 .closeBtn {
     background: #EFF3F5 !important;

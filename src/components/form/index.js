@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import ConditionsSelect from '../conditionSelectors'
 import DateSeletcor from '../dateSelector'
-import FormHeader from '../fromHeader'
+import FormHeader from '../formHeader'
 import SubmitRequestForm from '../submitRequestFrom'
 import Modal from 'react-modal';
 import emailjs from '@emailjs/browser';
 import * as styles from './formStyle.module.css'
+import {useTranslation} from "react-i18next";
 
 const customStyles = {
   content: {
@@ -17,16 +18,17 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
     width: '320px',
     background: 'white',
+    zIndex:'9999',
 
   },
   overlay: {
     background: 'rgba(0, 0, 0, 0.425)',
-
+    zIndex: 9999,
   }
 };
 
 const Form = () => {
-  
+  const {t} = useTranslation()
   const [state, setState] = useState({
     day: "",
     time: "7:00",
@@ -119,7 +121,7 @@ const Form = () => {
           disabled={disable}
           onClick={openModal}
         >
-          Send request
+          {t('Send Request')}
         </button>
         </div>
       </form>

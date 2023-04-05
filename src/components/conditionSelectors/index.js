@@ -8,26 +8,7 @@ import arrowIcon from './../../images/openOptions.svg';
 import incIcon from './../../images/incValue.svg'
 import decIcon from './../../images/decValue.svg'
 import {creatableSelectStyles} from "../../styles/selectStyles";
-
-const categoriesOptions = [
-    { value: '', label: '+ Select or add new one',isDisabled:true },
-    { value: 'Restaurant', label: 'Restaurant' },
-    { value: 'Cafe', label: 'Cafe' },
-    { value: 'Club', label: 'Club' },
-    { value: 'Pub', label: 'Pub' },
-    { value: 'BeerHouse', label: 'BeerHouse' },
-    { value: 'WineHouse', label: 'WineHouse' },
-    { value: 'Bar', label: 'Bar' },
-    { value: 'Kids', label: 'Kids' },
-];
-const additionalOptions = [
-    { value: '', label: '+ Select or add new one',isDisabled:true },
-    { value: 'None smoking', label: 'None smoking' },
-    { value: 'Parking', label: 'Parking' },
-    { value: 'Late closing', label: 'Late closing' },
-    { value: 'Open-Air', label: 'Open-Air' },
-
-]
+import {useTranslation} from "react-i18next";
 
 const pricesData = [
     {
@@ -59,6 +40,27 @@ const pricesData = [
 const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditionalInfo}) => {
     const [prices, setPrices] = useState(pricesData)
     const [guests,setGuests] = useState(1)
+    const {t} = useTranslation()
+
+    const categoriesOptions = [
+        { value: '', label: t('+ Select or add new one'),isDisabled:true },
+        { value: 'Restaurant', label: t('Restaurant') },
+        { value: 'Cafe', label: t('Cafe') },
+        { value: 'Club', label: t('Club') },
+        { value: 'Pub', label: t('Pub') },
+        { value: 'BeerHouse', label: t('BeerHouse') },
+        { value: 'WineHouse', label: t('WineHouse') },
+        { value: 'Bar', label: t('Bar') },
+        { value: 'Kids', label: t('Kids') }
+    ]
+    const additionalOptions = [
+        { value: '', label: t('+ Select or add new one'),isDisabled:true },
+        { value: 'None smoking', label: t('None smoking') },
+        { value: 'Parking', label: t('Parking') },
+        { value: 'Late closing', label: t('Late closing') },
+        { value: 'Open-Air', label: t('Open-Air') },
+
+    ]
 
     useEffect(()=>{
         selectGuests(guests)
@@ -104,7 +106,7 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
         <>
             <SelectContainer>
                 <div className={styles.selects}>
-                    <span className={styles.inputName}>Guests*</span>
+                    <span className={styles.inputName}>{t("Guests")} *</span>
                     <div className={styles.guests}>
                         <img src={decIcon} alt='dec' className={styles.btn} onClick={decGuests} />
                         <input type='number' min='0' value={guests} className={styles.guestsNumber} onChange={changeGuests}  />
@@ -117,7 +119,7 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
                         name='category'
                         options={categoriesOptions}
                         isClearable
-                        placeholder="Create or select category*"
+                        placeholder={t('Create or select category')+' *'}
                         className={styles.categories}
                         styles={creatableSelectStyles}
 
@@ -126,7 +128,7 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
             </SelectContainer>
             <SelectContainer>
                 <div className={styles.selects}>
-                    <span className={styles.inputName}>Select Price*</span>
+                    <span className={styles.inputName}>{t('Select Price')} *</span>
                     <div className={styles.prices}>
                         {
                             prices.map(item => {
@@ -142,7 +144,7 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
                         onChange={changeAddInfo}
                         styles={creatableSelectStyles}
                         className={styles.categories}
-                        placeholder='Additional requirements'
+                        placeholder={t('Additional requirements')}
                         isMulti
                         options={additionalOptions}
                     />

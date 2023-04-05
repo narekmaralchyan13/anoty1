@@ -6,24 +6,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {selectStyles} from "../../styles/selectStyles";
+import {useTranslation} from "react-i18next";
 
 
-const currentMonth = moment().month();
-console.log(currentMonth,'dasdasdsadasdasdd')
-const MonthOptions = [
-    { value: 1, label: 'Jan' },
-    { value: 2, label: 'Feb' },
-    { value: 3, label: 'Mar' },
-    { value: 4, label: 'Apr' },
-    { value: 5, label: 'May' },
-    { value: 6, label: 'Jun' },
-    { value: 7, label: 'Jul' },
-    { value: 8, label: 'Aug' },
-    { value: 9, label: 'Sep' },
-    { value: 10, label: 'Oct' },
-    { value: 11, label: 'Nov' },
-    { value: 12, label: 'Dec' },
-];
+
 function get5UpcomingYears (){
     const currentYear = moment().year();
     const upcomingYears = [];
@@ -43,7 +29,6 @@ function get5UpcomingYears (){
 function getDaysInMonth(year, month) {
     const dates = [];
     const date = moment(`${year}-${month}-01`);
-
     while (date.month() === parseInt(month) - 1) {
         // dates.push(date.format('ddd MMM DD YYYY'));
         dates.push({
@@ -60,19 +45,39 @@ function getDaysInMonth(year, month) {
 
 
 const DaySelector = ({selectDay})=>{
+    const {t,i18n} = useTranslation()
     const [days,setDays] = useState([])
+    const months = [
+        { value: 1, label: t('Jan') },
+        { value: 2, label: t('Feb') },
+        { value: 3, label: t('Mar') },
+        { value: 4, label: t('Apr') },
+        { value: 5, label: t('May') },
+        { value: 6, label: t('Jun') },
+        { value: 7, label: t('Jul') },
+        { value: 8, label: t('Aug') },
+        { value: 9, label: t('Sep') },
+        { value: 10, label: t('Oct') },
+        { value: 11, label: t('Nov') },
+        { value: 12, label: t('Dec') },]
+
     const [date,setDate] = useState({
-        year:get5UpcomingYears()[0],
-        month:moment().month(),
+        year:get5UpcomingYears()[0].value,
+        month:moment().month()+1,
     })
 
     useEffect(()=>{
         if(date.month && date.year){
-            setDays(getDaysInMonth(date.year,date.month))
+            setDays(getDaysInMonth(date.year,date.month).map(day=>{
+                return {
+                    ...day,
+                    weekDay:t(day.weekDay)
+                }
+            }))
         }
             selectDay('')
 
-    },[date.month,date.year])
+    },[date.month,date.year,i18n.language])
 
     function changeDay(date){
         setDays(prev=>prev.map(item=>{
@@ -114,14 +119,14 @@ const DaySelector = ({selectDay})=>{
     return(
         <div className={styles.dayContainer}>
             <div className={styles.dateHeader}>
-                <span className={styles.inputName}>Select Date *</span>
+                <span className={styles.inputName}>{t('Date')} *</span>
                 <div className={styles.monthYear}>
                     <Select
-                        defaultValue={MonthOptions.find(month=>month.value===currentMonth)}
+                        value={months.find(month=>month.value === date.month)}
                         placeholder='Month'
                         name='month'
                         onChange={changeMonth}
-                        options={MonthOptions}
+                        options={months}
                         styles={selectStyles}
                     />
                     <Select

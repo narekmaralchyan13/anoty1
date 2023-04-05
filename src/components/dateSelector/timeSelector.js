@@ -2,6 +2,7 @@ import * as styles from "./dateSelector.module.css";
 import React, {useState} from "react";
 import {selectStyles} from "../../styles/selectStyles";
 import Select from "react-select";
+import {useTranslation} from "react-i18next";
 
 
 const times = [
@@ -65,7 +66,7 @@ const timeModeOptions = [
 ]
 const TimeSelector = ({selectTime,selectTimeMode})=>{
     const [timesState, setTimesState] = useState(times)
-
+    const {t} = useTranslation()
     function changeTime(time) {
         setTimesState(prev => {
             return prev.map(item => {
@@ -89,7 +90,7 @@ const TimeSelector = ({selectTime,selectTimeMode})=>{
     return(
         <div className={styles.timeContainer}>
             <div className={styles.timeHead}>
-                <span className={styles.inputName}>Select Time*</span>
+                <span className={styles.inputName}>{t('Time')} *</span>
                 <Select
                     defaultValue={timeModeOptions[0]}
                     name='timeMode'

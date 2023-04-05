@@ -46,16 +46,17 @@
  export const creatableSelectStyles = {
      control: (base, state) => ({
          ...base,
-         backgroundColor: '#EFF3F5',
+         backgroundColor: 'none',
          border: 'none',
          outline: 'none',
          fontFamily: 'Montserrat',
-         fontSize: '24px',
+         fontSize: '120%',
          fontWeight: '400',
          lineHeight: '36px',
          letterSpacing: '0em',
          textAlign: 'left',
          boxShadow: '0',
+         display:"flex",
 
      }),
      option: (base, state) => ({

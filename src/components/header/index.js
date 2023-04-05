@@ -6,6 +6,7 @@ import armenianFlag from './../../images/armeniaFlag.svg'
 import gbFlag from './../../images/gbFlag.svg'
 import Select from "react-select";
 import {selectStyles} from "../../styles/selectStyles";
+import {useTranslation} from "react-i18next";
 
 
 const languageOptions = [
@@ -25,20 +26,28 @@ const languageOptions = [
     }
 ]
 
-const Header = () => (
-  <header className={styles.headerCont} >
-    <img
-      className={styles.logo}
-      alt="Anoty logo"
-      src={logo}
-    />
-      <Select
-          styles={selectStyles}
-          isSearchable={false}
-          options={languageOptions}
-          defaultValue={languageOptions[0]}
-      />
-  </header>
-)
+const Header = () => {
+    const {t,i18n} = useTranslation()
+    function  changeLanguage(lang){
+        i18n.changeLanguage(lang.value)
+    }
+
+    return (
+        <header className={styles.headerCont} >
+            <img
+                className={styles.logo}
+                alt="Anoty logo"
+                src={logo}
+            />
+            <Select
+                onChange={changeLanguage}
+                styles={selectStyles}
+                isSearchable={false}
+                options={languageOptions}
+                value={languageOptions.find(lang=>lang.value === i18n.language)}
+            />
+        </header>
+    )
+}
 
 export default Header
