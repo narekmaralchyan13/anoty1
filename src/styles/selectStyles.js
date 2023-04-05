@@ -56,9 +56,23 @@
          letterSpacing: '0em',
          textAlign: 'left',
          boxShadow: '0',
+         height:"100%",
          display:"flex",
+         flexWrap:'nowrap'
+
+
 
      }),
+     valueContainer:(base,state)=>({
+         width:'100%',
+         display:'flex',
+         alignItems:"center",
+         overflowX:"scroll",
+         height:"100%",
+         '&::-webkit-scrollbar':{
+         display: "none"}
+     })
+     ,
      option: (base, state) => ({
          ...base,
          color:state.isDisabled ? '#9E9E9E':'black',
@@ -69,6 +83,7 @@
          lineHeight: '24px',
          letterSpacing: '0em',
          textAlign: 'left',
+
          '&:hover': {
              backgroundColor: '#EFF3F5',
          },
@@ -104,11 +119,13 @@
      }),
      multiValue: (base, state) => ({
          backgroundColor: '#565656',
+         height:"100%",
+        whiteSpace:"nowrap",
          color: 'white',
          borderRadius: '20px',
          display: 'flex',
          padding: '0 10px',
-         justifayContent: "space-between",
+         justifyContent: "center",
          alignItems: 'center'
      }),
      multiValueLabel: (base, state) => ({

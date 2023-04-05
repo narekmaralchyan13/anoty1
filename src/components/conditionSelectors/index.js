@@ -144,8 +144,10 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
                         onChange={changeAddInfo}
                         styles={creatableSelectStyles}
                         className={styles.categories}
+                        closeMenuOnSelect={false}
                         placeholder={t('Additional requirements')}
                         isMulti
+                        hideSelectedOptions={false}
                         options={additionalOptions}
                     />
                 </div>
