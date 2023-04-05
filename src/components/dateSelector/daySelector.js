@@ -7,6 +7,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {selectStyles} from "../../styles/selectStyles";
 
+
+const currentMonth = moment().month();
+console.log(currentMonth,'dasdasdsadasdasdd')
 const MonthOptions = [
     { value: 1, label: 'Jan' },
     { value: 2, label: 'Feb' },
@@ -21,7 +24,6 @@ const MonthOptions = [
     { value: 11, label: 'Nov' },
     { value: 12, label: 'Dec' },
 ];
-
 function get5UpcomingYears (){
     const currentYear = moment().year();
     const upcomingYears = [];
@@ -60,8 +62,8 @@ function getDaysInMonth(year, month) {
 const DaySelector = ({selectDay})=>{
     const [days,setDays] = useState([])
     const [date,setDate] = useState({
-        year:'',
-        month:'',
+        year:get5UpcomingYears()[0],
+        month:moment().month(),
     })
 
     useEffect(()=>{
@@ -106,24 +108,6 @@ const DaySelector = ({selectDay})=>{
         infinite: false,
         slidesToShow: 7,
         slidesToScroll: 7,
-        // responsive: [
-        //     {
-        //         breakpoint: 1024,
-        //         settings: {
-        //             slidesToShow: 2,
-        //             slidesToScroll: 1,
-        //             infinite: true,
-        //             dots: true
-        //         }
-        //     },
-        //     {
-        //         breakpoint: 768,
-        //         settings: {
-        //             slidesToShow: 1,
-        //             slidesToScroll: 1
-        //         }
-        //     }
-        // ]
     };
 
 
@@ -133,6 +117,7 @@ const DaySelector = ({selectDay})=>{
                 <span className={styles.inputName}>Select Date *</span>
                 <div className={styles.monthYear}>
                     <Select
+                        defaultValue={MonthOptions.find(month=>month.value===currentMonth)}
                         placeholder='Month'
                         name='month'
                         onChange={changeMonth}
@@ -150,27 +135,15 @@ const DaySelector = ({selectDay})=>{
                 </div>
             </div>
             <div className={styles.days}>
-                {
-                    days.length ?
-                        <Slider {...sliderSettings}>
-                            {
-                                days.map(item=>{
-                                    return <div key={item.day} className={item.selected ? `${styles.dayItem} ${styles.selectedDay}` : styles.dayItem} onClick={()=>changeDay(item)}>
-                                        <p>{item.weekDay}</p>
-                                        <p>{item.day}</p>
-                                    </div>
-                                })}
-                        </Slider>:
-                        <Slider {...sliderSettings}>
-                                <div className={styles.dayItem} ></div>
-                                 <div className={styles.dayItem} ></div>
-                                 <div className={styles.dayItem} ></div>
-                                 <div className={styles.dayItem} ></div>
-                                 <div className={styles.dayItem} ></div>
-                                 <div className={styles.dayItem} ></div>
-                                 <div className={styles.dayItem} ></div>
-                        </Slider>
-                }
+                <Slider {...sliderSettings}>
+                    {
+                        days.map(item=>{
+                            return <div key={item.day} className={item.selected ? `${styles.dayItem} ${styles.selectedDay}` : styles.dayItem} onClick={()=>changeDay(item)}>
+                                <p>{item.weekDay}</p>
+                                <p>{item.day}</p>
+                            </div>
+                        })}
+                </Slider>
             </div>
 
         </div>

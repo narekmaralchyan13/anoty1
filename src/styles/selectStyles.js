@@ -1,6 +1,5 @@
  export const selectStyles = {
     control: (base, state) => ({
-        ...base,
         backgroundColor: 'white',
         fontFamily: 'Montserrat',
         fontSize: '100%',
@@ -8,8 +7,12 @@
         fontWeight: '400',
         textAlign: 'center',
         paddingRight:"5px",
-        border:"none",
-        outline:'none'
+        display:'flex',
+        cursor:'pointer',
+        justifyContent:'space-between',
+        border:'none',
+        outline:'none',
+
     }),
     option: (base, state) => ({
         ...base,
@@ -20,6 +23,7 @@
         fontWeight: '400',
         lineHeight: '24px',
         letterSpacing: '0em',
+        cursor:'pointer',
         textAlign: 'left',
         '&:hover': {
             backgroundColor: '#EFF3F5',
@@ -102,7 +106,7 @@
          color: 'white',
          borderRadius: '20px',
          display: 'flex',
-         padding: '0 6px',
+         padding: '0 10px',
          justifayContent: "space-between",
          alignItems: 'center'
      }),

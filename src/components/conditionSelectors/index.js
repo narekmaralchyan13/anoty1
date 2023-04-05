@@ -5,6 +5,8 @@ import CreatableSelect from 'react-select/creatable';
 import Select from 'react-select/creatable';
 import dollarIcon from './../../images/dollar.svg'
 import arrowIcon from './../../images/openOptions.svg';
+import incIcon from './../../images/incValue.svg'
+import decIcon from './../../images/decValue.svg'
 import {creatableSelectStyles} from "../../styles/selectStyles";
 
 const categoriesOptions = [
@@ -26,6 +28,7 @@ const additionalOptions = [
     { value: 'Open-Air', label: 'Open-Air' },
 
 ]
+
 const pricesData = [
     {
         value: "low",
@@ -103,9 +106,9 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
                 <div className={styles.selects}>
                     <span className={styles.inputName}>Guests*</span>
                     <div className={styles.guests}>
-                        <span className={styles.btn} onClick={decGuests}>-</span>
+                        <img src={decIcon} alt='dec' className={styles.btn} onClick={decGuests} />
                         <input type='number' min='0' value={guests} className={styles.guestsNumber} onChange={changeGuests}  />
-                        <span className={styles.btn} onClick={incrGuests}>+</span>
+                        <img src={incIcon} alt='inc' className={styles.btn} onClick={incrGuests} />
                     </div>
                 </div>
                 <div className={styles.selects}>

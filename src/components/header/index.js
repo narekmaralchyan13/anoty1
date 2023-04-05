@@ -4,18 +4,25 @@ import * as styles from "./styles.module.css"
 import logo from './../../images/logo.svg'
 import armenianFlag from './../../images/armeniaFlag.svg'
 import gbFlag from './../../images/gbFlag.svg'
+import Select from "react-select";
+import {selectStyles} from "../../styles/selectStyles";
 
-const languages = [
-  {
-    title: 'Հայերեն',
-    flag: armenianFlag,
-    value: 'hy'
-  },
-  {
-    title: 'English',
-    flag: gbFlag,
-    value: 'en'
-  }
+
+const languageOptions = [
+    {
+        value:'en',
+        label:<div className={styles.language}>
+            <img src={gbFlag} alt='english' />
+            <span>English</span>
+        </div>
+    },
+    {
+        value:'am',
+        label:<div className={styles.language}>
+            <img src={armenianFlag} alt='armenian'/>
+            <span>Հայերեն</span>
+        </div>
+    }
 ]
 
 const Header = () => (
@@ -25,21 +32,12 @@ const Header = () => (
       alt="Anoty logo"
       src={logo}
     />
-    <select>
-      {
-        languages.map(language => {
-          return <option value={language.value} key={language.value} >
-            {/* <img
-              height={16}
-              width={16} 
-              alt={language.title}
-              src={language.flag}
-            /> */}
-            {language.title}
-          </option>
-        })
-      }
-    </select>
+      <Select
+          styles={selectStyles}
+          isSearchable={false}
+          options={languageOptions}
+          defaultValue={languageOptions[0]}
+      />
   </header>
 )
 
