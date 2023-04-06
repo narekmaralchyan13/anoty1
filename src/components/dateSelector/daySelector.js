@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {selectStyles} from "../../styles/selectStyles";
 import {useTranslation} from "react-i18next";
+import NextArrow from "../sliderArrows/nextArrow";
+import PrevArrow from "../sliderArrows/prevArrow";
 
 
 
@@ -113,6 +115,8 @@ const DaySelector = ({selectDay})=>{
         infinite: false,
         slidesToShow: 7,
         slidesToScroll: 7,
+        nextArrow:<NextArrow />,
+        prevArrow:<PrevArrow/>
     };
 
 

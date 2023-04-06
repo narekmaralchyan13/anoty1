@@ -13,6 +13,7 @@
         border:'none',
         outline:'none',
 
+
     }),
     option: (base, state) => ({
         ...base,
@@ -50,7 +51,7 @@
          border: 'none',
          outline: 'none',
          fontFamily: 'Montserrat',
-         fontSize: '120%',
+         fontSize: '90%',
          fontWeight: '400',
          lineHeight: '36px',
          letterSpacing: '0em',
@@ -59,7 +60,6 @@
          height:"100%",
          display:"flex",
          flexWrap:'nowrap'
-
 
 
      }),

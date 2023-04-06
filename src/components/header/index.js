@@ -11,7 +11,7 @@ import {useTranslation} from "react-i18next";
 
 const languageOptions = [
     {
-        value:'en',
+        value:'en-US',
         label:<div className={styles.language}>
             <img src={gbFlag} alt='english' />
             <span>English</span>
@@ -31,7 +31,6 @@ const Header = () => {
     function  changeLanguage(lang){
         i18n.changeLanguage(lang.value)
     }
-
     return (
         <header className={styles.headerCont} >
             <img
@@ -44,7 +43,7 @@ const Header = () => {
                 styles={selectStyles}
                 isSearchable={false}
                 options={languageOptions}
-                value={languageOptions.find(lang=>lang.value === i18n.language) || languageOptions[0]}
+                value={languageOptions.find(lang=>lang.value === i18n.language)}
             />
         </header>
     )
