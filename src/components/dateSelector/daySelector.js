@@ -29,31 +29,21 @@ function get5UpcomingYears (){
 }
 
 function getDaysInMonth(year, month) {
-    // const dates = [];
-    // const date = moment(`${year}-${month}-01`);
-    // while (date.month() === parseInt(month) - 1) {
-    //     // dates.push(date.format('ddd MMM DD YYYY'));
-    //     dates.push({
-    //         day:date.format("DD"),
-    //         weekDay:date.format('ddd'),
-    //         month:date.format('MMM'),
-    //         year:date.format('YYYY'),
-    //         selected:false
-    //     })
-    //     date.add(1, 'day');
-    // }
-    // return dates;
     let date = new Date(year, month-1, 1);
+    let currentDay = new Date()
+
     let days = [];
     while (date.getMonth() === month-1) {
         let d = new Date(date)
         let dateArray = d.toString().split(' ')
+        console.log({d,currentDay})
         days.push({
                     day:dateArray[2],
                     weekDay:dateArray[0],
                     month:dateArray[1],
                     year:year,
-                    selected:false
+                    disable:d < currentDay.setHours(0,0,0,0,),
+                    selected:false,
         });
         date.setDate(date.getDate() + 1);
     }
@@ -166,10 +156,10 @@ const DaySelector = ({selectDay})=>{
                 <Slider {...sliderSettings}>
                     {
                         days.map(item=>{
-                            return <div key={item.day} className={item.selected ? `${styles.dayItem} ${styles.selectedDay}` : styles.dayItem} onClick={()=>changeDay(item)}>
+                            return <button type='button' disabled={item.disable} key={item.day} className={item.selected ? `${styles.dayItem} ${styles.selectedDay}` : styles.dayItem} onClick={()=>changeDay(item)}>
                                 <p>{item.weekDay}</p>
                                 <p>{item.day}</p>
-                            </div>
+                            </button>
                         })}
                 </Slider>
             </div>

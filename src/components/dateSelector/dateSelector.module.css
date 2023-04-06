@@ -37,6 +37,11 @@
     border-radius: 8px;
     cursor: pointer;
 }
+.dayItem:disabled{
+    background-color: #C2C1C1;
+    color: #565656;
+    cursor: auto;
+}
 .selectedDay{
     background-color: #FFC629;
     border: 1px solid #FFC629;
