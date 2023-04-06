@@ -9,6 +9,23 @@ import incIcon from './../../images/incValue.svg'
 import decIcon from './../../images/decValue.svg'
 import {creatableSelectStyles} from "../../styles/selectStyles";
 import {useTranslation} from "react-i18next";
+import { components } from "react-select";
+
+
+const Option = (props) => {
+    return (
+        <div>
+            <components.Option {...props}>
+                <input
+                    type="checkbox"
+                    checked={props.isSelected}
+                    onChange={() => null}
+                />{" "}
+                <label>{props.label}</label>
+            </components.Option>
+        </div>
+    );
+};
 
 const pricesData = [
     {
@@ -41,6 +58,13 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
     const [prices, setPrices] = useState(pricesData)
     const [guests,setGuests] = useState(1)
     const {t} = useTranslation()
+    const [additionalOptions,setAdditionalOptions] = useState([
+        { value: 'None smoking', label: t('None smoking') },
+        { value: 'Parking', label: t('Parking') },
+        { value: 'Late closing', label: t('Late closing') },
+        { value: 'Open-Air', label: t('Open-Air') },])
+
+    const [addValues,setAddValues] =useState([])
 
     const categoriesOptions = [
         { value: '', label: t('+ Select or add new one'),isDisabled:true },
@@ -52,14 +76,6 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
         { value: 'WineHouse', label: t('WineHouse') },
         { value: 'Bar', label: t('Bar') },
         { value: 'Kids', label: t('Kids') }
-    ]
-    const additionalOptions = [
-        { value: '', label: t('+ Select or add new one'),isDisabled:true },
-        { value: 'None smoking', label: t('None smoking') },
-        { value: 'Parking', label: t('Parking') },
-        { value: 'Late closing', label: t('Late closing') },
-        { value: 'Open-Air', label: t('Open-Air') },
-
     ]
 
     useEffect(()=>{
@@ -99,8 +115,14 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
     }
     function changeAddInfo(info){
         selectAdditionalInfo(info.map(info=>info.value))
+        setAddValues(info)
     }
-
+    function addAdditionalOption(prop){
+        const option = {value:prop,label:prop}
+        setAdditionalOptions(prev=>[...prev,option])
+        selectAdditionalInfo([...addValues.map(info=>info.value),prop])
+        setAddValues(prev=>[...prev,option])
+    }
 
     return (
         <>
@@ -140,13 +162,19 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
                     </div>
                 </div>
                 <div className={styles.selects}>
-                    <Select
+                    <CreatableSelect
                         onChange={changeAddInfo}
+                        controlShouldRenderValue={false}
+                        value={addValues}
+                        onCreateOption={addAdditionalOption}
                         styles={creatableSelectStyles}
                         className={styles.categories}
                         closeMenuOnSelect={false}
                         placeholder={t('Additional requirements')}
                         isMulti
+                        components={
+                            {Option}
+                        }
                         hideSelectedOptions={false}
                         options={additionalOptions}
                     />
@@ -158,3 +186,76 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
 }
 
 export default ConditionsSelect
+
+// import React, { Component } from "react";
+// import ReactDOM from "react-dom";
+// import CreatableSelect from 'react-select/creatable';
+// import { components } from "react-select";
+// const colourOptions  =
+//     [
+//         { value: 'Restaurant', label: 'Restaurant' },
+//         { value: 'Cafe', label: 'Cafe' },
+//         { value: 'Club', label: 'Club' },
+//         { value: 'Pub', label: 'Pub' },
+//         { value: 'BeerHouse', label: 'BeerHouse' },
+//         { value: 'WineHouse', label: 'WineHouse' },
+//         { value: 'Bar', label: 'Bar' },
+//         { value: 'Kids', label: 'Kids' }
+//     ]
+//
+// const Option = (props) => {
+//     console.log(props,'porps')
+//     return (
+//         <div>
+//             <components.Option {...props}>
+//                 <input
+//                     type="checkbox"
+//                     checked={props.isSelected}
+//                     onChange={() => null}
+//                 />{" "}
+//                 <label>{props.label}</label>
+//             </components.Option>
+//         </div>
+//     );
+// };
+//
+// export default class Example extends Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             optionSelected: null
+//         };
+//     }
+//
+//     handleChange = (selected) => {
+//         console.log(selected,"selkected")
+//         this.setState({
+//             optionSelected: selected
+//         });
+//     };
+//
+//     render() {
+//         return (
+//             <span
+//                 class="d-inline-block"
+//                 data-toggle="popover"
+//                 data-trigger="focus"
+//                 data-content="Please selecet account(s)"
+//             >
+//         <CreatableSelect
+//             options={colourOptions}
+//             isMulti
+//             closeMenuOnSelect={false}
+//             hideSelectedOptions={false}
+//             components={{
+//                 Option
+//             }}
+//             onChange={this.handleChange}
+//             allowSelectAll={true}
+//             value={this.state.optionSelected}
+//         />
+//       </span>
+//         );
+//     }
+// }
+

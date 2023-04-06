@@ -38,6 +38,7 @@ const Form = () => {
     price: "normal",
     additionalInfo: "",
   })
+  console.log({state})
   const [disable, setDisable] = useState(true)
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [modalState,setModalState] = useState('idle')
