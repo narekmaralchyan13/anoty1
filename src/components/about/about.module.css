@@ -9,7 +9,7 @@
     letter-spacing: 0em;
     text-align: center;
 }
-@media (max-width:412px) {
+@media (max-width:450px) {
     .about {
         width: 100%;
         font-family: Montserrat;

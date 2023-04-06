@@ -29,7 +29,7 @@
 .rightsLine{
     width: 100%;
 }
-@media (max-width:412px) {
+@media (max-width:450px) {
     .footer {
         width: 100%;
         padding:24px 20px;

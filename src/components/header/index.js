@@ -44,7 +44,7 @@ const Header = () => {
                 styles={selectStyles}
                 isSearchable={false}
                 options={languageOptions}
-                value={languageOptions.find(lang=>lang.value === i18n.language)}
+                value={languageOptions.find(lang=>lang.value === i18n.language) || languageOptions[0]}
             />
         </header>
     )

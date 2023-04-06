@@ -29,7 +29,7 @@ background-repeat: no-repeat;
 background-size: contain;
     padding: 10px 0;
 }
-@media (max-width:412px) {
+@media (max-width:450px) {
     .formHeader{
         width: 100%;
         min-width: 0;

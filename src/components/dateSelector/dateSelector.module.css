@@ -104,7 +104,7 @@ line-height: 36px;
     background-color:#FFC629 ;
     border:1px solid #FFC629 ;
 }
-@media (max-width:412px) {
+@media (max-width:450px) {
     .dayContainer {
         width: 100%;
     }
