@@ -119,6 +119,28 @@ const DaySelector = ({selectDay})=>{
         prevArrow:<PrevArrow/>
     };
 
+    const days1=[
+        {
+            day:1,
+            weekDay:'asa'
+        },
+        {
+            day:1,
+            weekDay:'asa'
+        },
+        {
+            day:1,
+            weekDay:'asa'
+        },
+        {
+            day:1,
+            weekDay:'asa'
+        },
+        {
+            day:1,
+            weekDay:'asa'
+        }
+    ]
 
     return(
         <div className={styles.dayContainer}>
@@ -146,7 +168,7 @@ const DaySelector = ({selectDay})=>{
             <div className={styles.days}>
                 <Slider {...sliderSettings}>
                     {
-                        days.map(item=>{
+                        days1.map(item=>{
                             return <div key={item.day} className={item.selected ? `${styles.dayItem} ${styles.selectedDay}` : styles.dayItem} onClick={()=>changeDay(item)}>
                                 <p>{item.weekDay}</p>
                                 <p>{item.day}</p>
