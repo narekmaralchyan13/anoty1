@@ -11,8 +11,9 @@ const FormHeader
   return (
     <div className={styles.formHeader}>
         <h1 className={styles.headerText}>{t("Hold Your Table!")}</h1>
-
-          <p className={styles.infoText}>{t("We will help you to find a place")}</p>
+        <div className={styles.infoText}>
+            <p>{t("We will help you to find a place")}</p>
+        </div>
 
     </div>
   )
