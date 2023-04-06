@@ -29,20 +29,35 @@ function get5UpcomingYears (){
 }
 
 function getDaysInMonth(year, month) {
-    const dates = [];
-    const date = moment(`${year}-${month}-01`);
-    while (date.month() === parseInt(month) - 1) {
-        // dates.push(date.format('ddd MMM DD YYYY'));
-        dates.push({
-            day:date.format("DD"),
-            weekDay:date.format('ddd'),
-            month:date.format('MMM'),
-            year:date.format('YYYY'),
-            selected:false
-        })
-        date.add(1, 'day');
+    // const dates = [];
+    // const date = moment(`${year}-${month}-01`);
+    // while (date.month() === parseInt(month) - 1) {
+    //     // dates.push(date.format('ddd MMM DD YYYY'));
+    //     dates.push({
+    //         day:date.format("DD"),
+    //         weekDay:date.format('ddd'),
+    //         month:date.format('MMM'),
+    //         year:date.format('YYYY'),
+    //         selected:false
+    //     })
+    //     date.add(1, 'day');
+    // }
+    // return dates;
+    let date = new Date(year, month-1, 1);
+    let days = [];
+    while (date.getMonth() === month-1) {
+        let d = new Date(date)
+        let dateArray = d.toString().split(' ')
+        days.push({
+                    day:dateArray[2],
+                    weekDay:dateArray[0],
+                    month:dateArray[1],
+                    year:year,
+                    selected:false
+        });
+        date.setDate(date.getDate() + 1);
     }
-    return dates;
+    return days;
 }
 
 
@@ -115,32 +130,14 @@ const DaySelector = ({selectDay})=>{
         infinite: false,
         slidesToShow: 7,
         slidesToScroll: 7,
+        style: {
+            display: 'flex',
+            gap:'5px',
+        },
         nextArrow:<NextArrow />,
         prevArrow:<PrevArrow/>
     };
 
-    const days1=[
-        {
-            day:1,
-            weekDay:'asa'
-        },
-        {
-            day:1,
-            weekDay:'asa'
-        },
-        {
-            day:1,
-            weekDay:'asa'
-        },
-        {
-            day:1,
-            weekDay:'asa'
-        },
-        {
-            day:1,
-            weekDay:'asa'
-        }
-    ]
 
     return(
         <div className={styles.dayContainer}>
@@ -168,7 +165,7 @@ const DaySelector = ({selectDay})=>{
             <div className={styles.days}>
                 <Slider {...sliderSettings}>
                     {
-                        days1.map(item=>{
+                        days.map(item=>{
                             return <div key={item.day} className={item.selected ? `${styles.dayItem} ${styles.selectedDay}` : styles.dayItem} onClick={()=>changeDay(item)}>
                                 <p>{item.weekDay}</p>
                                 <p>{item.day}</p>
