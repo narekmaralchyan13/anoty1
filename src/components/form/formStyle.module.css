@@ -1,3 +1,4 @@
+
 .form {
   padding-left: 60px;
   background-image: url(./../../images/tableBackground.png), url(./../../images/background.jpg);
@@ -7,6 +8,15 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+}
+
+@media (max-width:412px) {
+  .form{
+    padding: 20px;
+    background-image: url("");
+    align-items: center;
+    gap: 16px;
+  }
 }
 
 .sendBtn {
@@ -26,4 +36,20 @@ margin-bottom: 130px;
 .sendBtn:disabled{
   background-color: #C2C1C1;
   cursor: auto;
+  color: #565656;
+}
+@media (max-width:412px) {
+  .form{
+    padding: 20px;
+    background-image: url("");
+    align-items: center;
+    gap: 16px;
+  }
+  .sendBtn{
+    margin-bottom: 56px;
+    font-size: 24px;
+    line-height: 36px;
+    padding: 4px 15px;
+
+  }
 }

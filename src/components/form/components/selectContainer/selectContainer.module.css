@@ -4,3 +4,9 @@
     align-items: center;
     gap:24px;
 }
+@media (max-width:412px) {
+    .selectContainer{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

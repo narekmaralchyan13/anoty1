@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SelectContainer from '../form/components/selectContainer'
 import * as styles from './conditions.module.css'
 import CreatableSelect from 'react-select/creatable';
-import Select from 'react-select/creatable';
 import dollarIcon from './../../images/dollar.svg'
-import arrowIcon from './../../images/openOptions.svg';
 import incIcon from './../../images/incValue.svg'
 import decIcon from './../../images/decValue.svg'
 import {creatableSelectStyles} from "../../styles/selectStyles";
@@ -186,76 +184,3 @@ const ConditionsSelect = ({selectGuests,selectCategory,selectPrice,selectAdditio
 }
 
 export default ConditionsSelect
-
-// import React, { Component } from "react";
-// import ReactDOM from "react-dom";
-// import CreatableSelect from 'react-select/creatable';
-// import { components } from "react-select";
-// const colourOptions  =
-//     [
-//         { value: 'Restaurant', label: 'Restaurant' },
-//         { value: 'Cafe', label: 'Cafe' },
-//         { value: 'Club', label: 'Club' },
-//         { value: 'Pub', label: 'Pub' },
-//         { value: 'BeerHouse', label: 'BeerHouse' },
-//         { value: 'WineHouse', label: 'WineHouse' },
-//         { value: 'Bar', label: 'Bar' },
-//         { value: 'Kids', label: 'Kids' }
-//     ]
-//
-// const Option = (props) => {
-//     console.log(props,'porps')
-//     return (
-//         <div>
-//             <components.Option {...props}>
-//                 <input
-//                     type="checkbox"
-//                     checked={props.isSelected}
-//                     onChange={() => null}
-//                 />{" "}
-//                 <label>{props.label}</label>
-//             </components.Option>
-//         </div>
-//     );
-// };
-//
-// export default class Example extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             optionSelected: null
-//         };
-//     }
-//
-//     handleChange = (selected) => {
-//         console.log(selected,"selkected")
-//         this.setState({
-//             optionSelected: selected
-//         });
-//     };
-//
-//     render() {
-//         return (
-//             <span
-//                 class="d-inline-block"
-//                 data-toggle="popover"
-//                 data-trigger="focus"
-//                 data-content="Please selecet account(s)"
-//             >
-//         <CreatableSelect
-//             options={colourOptions}
-//             isMulti
-//             closeMenuOnSelect={false}
-//             hideSelectedOptions={false}
-//             components={{
-//                 Option
-//             }}
-//             onChange={this.handleChange}
-//             allowSelectAll={true}
-//             value={this.state.optionSelected}
-//         />
-//       </span>
-//         );
-//     }
-// }
-

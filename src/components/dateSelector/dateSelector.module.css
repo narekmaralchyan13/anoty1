@@ -12,6 +12,7 @@
     align-items: center;
     font-family: 'Montserrat';
 }
+
 .dateHeader{
     width: 100%;
     display: flex;
@@ -102,4 +103,25 @@ line-height: 36px;
     line-height: 24px;
     background-color:#FFC629 ;
     border:1px solid #FFC629 ;
+}
+@media (max-width:412px) {
+    .dayContainer {
+        width: 100%;
+    }
+    .timeContainer{
+        width: 100%;
+    }
+    .monthYear{
+        width: 70%;
+    }
+    .inputName{
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: left;
+    }
+    .dayItem{
+        width: 90% !important;
+    }
 }

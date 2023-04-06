@@ -9,3 +9,17 @@
     letter-spacing: 0em;
     text-align: center;
 }
+@media (max-width:412px) {
+    .about {
+        width: 100%;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: center;
+        padding: 24px 20px;
+
+    }
+
+}
