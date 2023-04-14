@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, {createContext, useContext, useEffect, useReducer, useState} from 'react'
 import ConditionsSelect from '../conditionSelectors'
 import DateSeletcor from '../dateSelector'
 import FormHeader from '../formHeader'
-import SubmitRequestForm from '../submitRequestFrom'
+import SubmitRequestForm from '../submitRequestForm'
 import Modal from 'react-modal';
 import emailjs from '@emailjs/browser';
 import * as styles from './formStyle.module.css'
 import {useTranslation} from "react-i18next";
+import  {DataContext} from "../../dataContext/DataContextProvider";
+import {dataConverter} from "../../utils/dataConverter";
 
 const customStyles = {
   content: {
@@ -18,78 +20,33 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
     width: '320px',
     background: 'white',
-    zIndex:'9999',
-
-  },
-  overlay: {
-    background: 'rgba(0, 0, 0, 0.425)',
-    zIndex: 9999,
-  }
-};
+    zIndex: '9999',
+  }}
 
 const Form = () => {
-  const {t} = useTranslation()
-  const [state, setState] = useState({
-    day: "",
-    time: "7:00",
-    timeMode: "PM",
-    guests: 1,
-    category: "",
-    price: "normal",
-    additionalInfo: "",
-  })
+  const {state,dispatch} = useContext(DataContext)
+  const {t,i18n} = useTranslation()
   const [disable, setDisable] = useState(true)
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [modalState,setModalState] = useState('idle')
 
+
   useEffect(() => {
-    setDisable(!(state.day && state.category))
-  }, [state.day, state.category])
+    setDisable(!(state.category))
+  }, [state.category])
 
   function closeModal(){
     setModalIsOpen(false)
     setModalState('idle')
   }
 
-
-  function changeState(key, value) {
-    setState(prev => {
-      return {
-        ...prev,
-        [key]: value
-      }
-    })
-  }
-
-  function selectDay(day) {
-    changeState('day', day)
-  }
-  function selectTime(time) {
-    changeState('time', time)
-  }
-  function selectTimeMode(mode) {
-    changeState('timeMode', mode)
-  }
-  function selectGuests(guests) {
-    changeState('guests', guests)
-  }
-  function selectCategory(category) {
-    changeState('category', category)
-  }
-  function selectPrice(price) {
-    changeState('price', price)
-  }
-  function selectAdditionalInfo(info) {
-    changeState('additionalInfo', info)
-  }
- 
-
   function openModal(e) {
     e.preventDefault();
     setModalIsOpen(true)
   }
   function sendEmail(popUpInfo){
-    emailjs.send('service_l91vh88','template_le57tlq',{ ...popUpInfo,...state},'Jy_THQHbbVeM1_fiV')
+    const body  = dataConverter({...popUpInfo,...state})
+    emailjs.send('service_l91vh88','template_le57tlq',body,'Jy_THQHbbVeM1_fiV')
         .then(res=>{
           setModalState('success')
           console.log(res)
@@ -104,17 +61,8 @@ const Form = () => {
     <>
       <form className={styles.form} onSubmit={openModal} >
         <FormHeader />
-        <DateSeletcor
-          selectDay={selectDay}
-          selectTime={selectTime}
-          selectTimeMode={selectTimeMode}
-        />
-        <ConditionsSelect
-          selectGuests={selectGuests}
-          selectCategory={selectCategory}
-          selectPrice={selectPrice}
-          selectAdditionalInfo={selectAdditionalInfo}
-        />
+        <DateSeletcor/>
+        <ConditionsSelect/>
         <div>
         <button
           className={styles.sendBtn}
@@ -136,4 +84,4 @@ const Form = () => {
   )
 }
 
-export default Form
+export default Form;

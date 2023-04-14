@@ -1,9 +1,10 @@
 import * as styles from "./dateSelector.module.css";
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {selectStyles} from "../../styles/selectStyles";
 import Select from "react-select";
 import {useTranslation} from "react-i18next";
-
+import {DataContext} from "../../dataContext/DataContextProvider";
+import {selectTime} from "../../recuders/dataReducer";
 
 const times = [
     {
@@ -64,27 +65,44 @@ const timeModeOptions = [
         value: "AM"
     }
 ]
-const TimeSelector = ({selectTime,selectTimeMode})=>{
-    const [timesState, setTimesState] = useState(times)
+
+const TimeSelector = ()=>{
+    const {dispatch} = useContext(DataContext)
+    const [state,setState] = useState({
+        times:times,
+        mode:'PM'
+    })
     const {t} = useTranslation()
     function changeTime(time) {
-        setTimesState(prev => {
-            return prev.map(item => {
-                if (item.value === time) return {
-                    ...item,
-                    selected: true
-                }
-                else return {
-                    ...item,
-                    selected: false
-                }
-            })
+        setState(prev=>{
+            return {
+                ...prev,
+                times: prev.times.map(item => {
+                    if (item.value === time) return {
+                        ...item,
+                        selected: true
+                    }
+                    else return {
+                        ...item,
+                        selected: false
+                    }
+                })
+            }
         })
-        selectTime(time)
+        dispatch(selectTime(`${time} ${state.mode}`))
     }
 
+
     function changeTimeMode(mode){
-        selectTimeMode(mode.value)
+        setState(prev=>{
+            return {
+                ...prev,
+                mode: mode.value
+            }
+        })
+        const time = state.times.find(t=>t.selected)
+        dispatch(selectTime(`${time.value} ${mode.value}`))
+
     }
 
     return(
@@ -102,7 +120,7 @@ const TimeSelector = ({selectTime,selectTimeMode})=>{
             <div className={styles.timeBody}>
                 <div className={styles.timeBodySlice}>
                     {
-                        timesState.slice(0, 6).map(time => {
+                        state.times.slice(0, 6).map(time => {
                             return <span
                                 className={time.selected ? styles.selectedTime : styles.time}
                                 key={time.value}
@@ -115,7 +133,7 @@ const TimeSelector = ({selectTime,selectTimeMode})=>{
                 </div>
                 <div className={styles.timeBodySlice}>
                     {
-                        timesState.slice(6).map(time => {
+                        state.times.slice(6).map(time => {
                             return <span
                                 className={time.selected ? styles.selectedTime : styles.time}
                                 key={time.value}

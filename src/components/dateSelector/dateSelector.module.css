@@ -25,17 +25,19 @@
 .dayItem{
     height: 60px;
     width: 80% !important;
-    display: flex !important;
-    flex-direction: column;
-    font-size: 12px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
     background-color: #FFFFFF;
     border: 1px solid #C2C1C1;
     border-radius: 8px;
     cursor: pointer;
+    display: flex !important; ;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+
+}
+.dayText{
+    margin: 0;
 }
 .dayItem:disabled{
     background-color: #C2C1C1;

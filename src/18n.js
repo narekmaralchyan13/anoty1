@@ -1,7 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import en from "./locales/en/translation.json"; // import your default language file
+import en from "./locales/en-US/translation.json"; // import your default language file
 import am from "./locales/am/translation.json"; // import other language files as needed
 
 i18n

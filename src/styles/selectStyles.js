@@ -75,18 +75,18 @@
      ,
      option: (base, state) => ({
          ...base,
-         color:state.isDisabled ? '#9E9E9E':'black',
-         backgroundColor: state.isDisabled ? '#EFF3F5':'white',
+         color:'black',
+         backgroundColor: state.isDisabled ? 'orange':'white',
          fontFamily: 'Montserrat',
          fontSize: '16px',
          fontWeight: '400',
          lineHeight: '24px',
          letterSpacing: '0em',
          textAlign: 'left',
-
          '&:hover': {
-             backgroundColor: '#EFF3F5',
+             backgroundColor: state.isDisabled ? 'orange':'#EFF3F5',
          },
+
      }),
      dropdownIndicator: (base, state) => ({
          ...base,

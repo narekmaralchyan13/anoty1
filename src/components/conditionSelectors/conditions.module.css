@@ -1,7 +1,7 @@
 .selects {
     width: 30%;
     min-width: 350px;
-    height: 50px;
+    height: 72px;
     background-color: #EFF3F5;
     border-radius: 20px;
     display: flex;
@@ -19,7 +19,9 @@
     letter-spacing: 0em;
     text-align: left;
     white-space: nowrap;
-
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
 }
 .guests{
     padding: 6px ;

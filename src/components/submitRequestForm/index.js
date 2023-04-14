@@ -35,7 +35,7 @@ const SubmitRequestForm = ({closeModal,sendEmail,modalState}) => {
     message: ""
   })
     useEffect(()=>{
-        if(inputValues.email && inputValues.phone){
+        if(inputValues.email && inputValues.phone.length > 8){
             setDisabled(false)
         }
         else setDisabled(true)

@@ -1,0 +1,21 @@
+.ant-btn-primary{
+    width: 100%;
+    background-color: #FFC629 !important;
+    outline: #FFC629;
+    color: black;
+    border: #FFC629;
+}
+.ant-btn-primary:disabled {
+    background-color: lightgray !important;
+
+}
+.ant-input:focus{
+    border-color: #FFC629;
+    outline: 0;
+    box-shadow: 0 0 0 0
+}
+.ant-input:hover {
+    border-color: #FFC629;
+    outline: none;
+    box-shadow: 0 0 0 0
+}
