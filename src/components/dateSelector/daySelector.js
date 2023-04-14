@@ -13,7 +13,6 @@ import {DataContext} from "../../dataContext/DataContextProvider";
 import {selectDay} from "../../recuders/dataReducer";
 import SCarousel from "../styledComponents/styledCarousel";
 
-const currentDay = new Date()
 const MonthsOptions = [
     { value: 1, label: 'Jan'  },
     { value: 2, label: 'Feb' },
@@ -48,8 +47,8 @@ const DaySelector = ()=>{
     })
     const [days,setDays] = useState({
         options:getDaysInMonth( years.selected.value, months.selected.value),
-        current:currentDay.setHours(0,0,0,0,),
-        selected:currentDay
+        current:new Date().setHours(0,0,0,0,),
+        selected:new Date()
     })
 
 
@@ -150,7 +149,7 @@ const DaySelector = ()=>{
                     prevArrow={<PrevArrow />}
                     slidesToShow={7}
                     slidesToScroll={7}
-                    initialSlide={ currentDay.getDate()-1 }
+                    initialSlide={ (new Date()).getDate()-1 }
                     dots={false}
                     draggable
                     infinite={false}
