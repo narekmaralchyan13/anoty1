@@ -32,8 +32,8 @@ const Form = () => {
 
 
   useEffect(() => {
-    setDisable(!(state.category))
-  }, [state.category])
+    setDisable(!(state.category) || !(state.guests) )
+  }, [state.category,state.guests])
 
   function closeModal(){
     setModalIsOpen(false)

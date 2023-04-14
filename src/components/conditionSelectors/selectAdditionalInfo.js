@@ -90,24 +90,3 @@ const SelectAdditionalInfo = () => {
 }
 export default SelectAdditionalInfo
 
-
-/*
-{/*<div className={styles.selects}>*/
-/*    <CreatableSelect*/
-/*        onChange={changeAddInfo}*/
-/*        controlShouldRenderValue={false}*/
-/*        value={addValues}*/
-/*        onCreateOption={addAdditionalOption}*/
-/*        styles={creatableSelectStyles}*/
-/*        className={styles.categories}*/
-/*        closeMenuOnSelect={false}*/
-/*        placeholder={t('Additional requirements')}*/
-/*        isMulti*/
-/*        components={*/
-/*            {Option}*/
-/*        }*/
-/*        hideSelectedOptions={false}*/
-/*        options={additionalOptions}*/
-/*    />*/
-/*</div>*/
-

@@ -34,15 +34,14 @@
     justify-content: center;
     align-items: center;
     font-size: 12px;
-
 }
-.dayText{
-    margin: 0;
-}
-.dayItem:disabled{
+.disabledDay{
     background-color: #C2C1C1;
     color: #565656;
     cursor: auto;
+}
+.dayText{
+    margin: 0;
 }
 .selectedDay{
     background-color: #FFC629;

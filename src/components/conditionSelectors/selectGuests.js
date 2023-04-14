@@ -8,13 +8,13 @@ import {useTranslation} from "react-i18next";
 const SelectGuests = ()=>{
     const {dispatch} = useContext(DataContext)
     const {t} = useTranslation()
-    const [guests,setGuests] = useState(1)
+    const [guests,setGuests] = useState(0)
 
     useEffect(()=>{
         dispatch(selectGuests(guests))
     },[guests])
     function changeGuests(evt){
-        if(evt.target.value > 0){
+        if(evt.target.value >= 0){
             setGuests(evt.target.value)
         }
     }
@@ -22,7 +22,7 @@ const SelectGuests = ()=>{
         setGuests(prev=>++prev)
     }
     function decGuests(){
-        if(guests>1)  {
+        if(guests>0)  {
             setGuests(prev=>--prev);
         }
     }

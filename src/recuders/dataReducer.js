@@ -13,7 +13,7 @@ export const dataInitialState = {
     day:`${currentDay.getDate()}/${currentDay.getMonth()+1}/${currentDay.getFullYear()}`,
     category:'',
     price:'normal',
-    guests:1,
+    guests:0,
     additionalInfo:[],
     time:'7:00 PM'
 }

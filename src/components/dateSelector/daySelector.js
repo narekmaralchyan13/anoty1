@@ -1,7 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import * as styles from "./dateSelector.module.css";
 import Select from "react-select";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {selectStyles} from "../../styles/selectStyles";
@@ -12,7 +11,9 @@ import {get5UpcomingYears} from "../../utils/get5UpcomingYears";
 import {getDaysInMonth} from "../../utils/getDaysInMonth";
 import {DataContext} from "../../dataContext/DataContextProvider";
 import {selectDay} from "../../recuders/dataReducer";
+import SCarousel from "../styledComponents/styledCarousel";
 
+const currentDay = new Date()
 const MonthsOptions = [
     { value: 1, label: 'Jan'  },
     { value: 2, label: 'Feb' },
@@ -47,8 +48,8 @@ const DaySelector = ()=>{
     })
     const [days,setDays] = useState({
         options:getDaysInMonth( years.selected.value, months.selected.value),
-        current:new Date().setHours(0,0,0,0,),
-        selected:new Date()
+        current:currentDay.setHours(0,0,0,0,),
+        selected:currentDay
     })
 
 
@@ -112,6 +113,26 @@ const DaySelector = ()=>{
         prevArrow:<PrevArrow/>
     };
 
+    function handleClickDay(item,disabled){
+        if(!disabled){
+            changeDay(item)
+        }
+    }
+    function getInitialSlide (){
+        let initialSlide = 0
+        if(currentDay.getDate() > 6) {
+            let day = currentDay.getDate()
+            let mnacord = day % 7
+            if(!mnacord){
+                initialSlide = day-7
+            }
+            else {
+                initialSlide = day - mnacord
+            }
+        }
+        return initialSlide
+    }
+
 
     return(
         <div className={styles.dayContainer}>
@@ -138,16 +159,28 @@ const DaySelector = ()=>{
 
             </div>
             <div className={styles.days}>
-                <Slider {...sliderSettings}>
+                <SCarousel
+                    arrows={true}
+                    nextArrow={<NextArrow />}
+                    prevArrow={<PrevArrow />}
+                    slidesToShow={7}
+                    slidesToScroll={7}
+                    initialSlide={ getInitialSlide() }
+                    dots={false}
+                    draggable
+                    infinite={false}
+                >
                     {
                         days.options.map(item=>{
-                            return <button type='button' disabled={item < days.current } key={item} className={item.setHours(0,0,0,0) === days.selected.setHours(0,0,0,0) ? `${styles.dayItem} ${styles.selectedDay}` : styles.dayItem}
-                                           onClick={()=>changeDay(item)}>
-                                         <p className={styles.dayText}>{t(item.toLocaleString('en', { weekday: 'short' }))}</p>
-                                        <p className={styles.dayText}>{item.getDate()}</p>
-                                    </button>
+                            const disabled = item < days.current
+                            const selected = item.setHours(0,0,0,0) === days.selected.setHours(0,0,0,0)
+                            return <div className={`${disabled ? styles.disabledDay:""} ${ selected ? styles.selectedDay:""} ${styles.dayItem}`}  key={item}
+                                           onClick={()=> handleClickDay(item,disabled)}>
+                                <p className={styles.dayText}>{t(item.toLocaleString('en', { weekday: 'short' }))}</p>
+                                <p className={styles.dayText}>{item.getDate()}</p>
+                            </div>
                         })}
-                </Slider>
+                </SCarousel>
             </div>
 
         </div>
