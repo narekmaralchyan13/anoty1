@@ -16,7 +16,6 @@ import 'antd/dist/antd.css'
 const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
 
 const IndexPage = () => {
-
     return (
         <Layout>
             <DataContextProvider>

@@ -118,21 +118,6 @@ const DaySelector = ()=>{
             changeDay(item)
         }
     }
-    function getInitialSlide (){
-        let initialSlide = 0
-        if(currentDay.getDate() > 6) {
-            let day = currentDay.getDate()
-            let mnacord = day % 7
-            if(!mnacord){
-                initialSlide = day-7
-            }
-            else {
-                initialSlide = day - mnacord
-            }
-        }
-        return initialSlide
-    }
-
 
     return(
         <div className={styles.dayContainer}>
@@ -165,7 +150,7 @@ const DaySelector = ()=>{
                     prevArrow={<PrevArrow />}
                     slidesToShow={7}
                     slidesToScroll={7}
-                    initialSlide={ getInitialSlide() }
+                    initialSlide={ currentDay.getDate()-1 }
                     dots={false}
                     draggable
                     infinite={false}

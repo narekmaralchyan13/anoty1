@@ -7,10 +7,10 @@ import "@fontsource/montserrat"
 
 const FormHeader
  = () => {
-    const {t} = useTranslation()
+    const {t,i18n} = useTranslation()
   return (
     <div className={styles.formHeader}>
-        <h1 className={styles.headerText}>{t("Hold Your Table!")}</h1>
+        <h1 className={`${styles.headerText} ${i18n.language}`}>{t("Hold Your Table!")}</h1>
         <div className={styles.infoText}>
             <p>{t("We will help you to find a place")}</p>
         </div>

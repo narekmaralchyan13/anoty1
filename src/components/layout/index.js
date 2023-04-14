@@ -5,7 +5,7 @@ import * as styles from "./layoutStyle.module.css"
 const Layout = ({ children }) => {
 
   return (
-      <div className={styles.content}>
+      <div className={`${styles.content}`}>
             <Header />
           {children}
       </div>
