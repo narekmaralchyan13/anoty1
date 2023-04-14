@@ -10,10 +10,14 @@
   gap: 32px;
 }
 
+@media (max-width: 830px) {
+  .form{
+    background-image: url('');
+  }
+}
 @media (max-width:450px) {
   .form{
     padding: 20px;
-    background-image: url("");
     align-items: center;
     gap: 16px;
   }

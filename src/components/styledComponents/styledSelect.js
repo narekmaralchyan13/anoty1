@@ -9,12 +9,17 @@ const SSelect = styled(Select)`
     border-radius: 20px;
     width: 30%;
     min-width: 350px;
+    @media (max-width: 458px) {
+      width: 100%;
+      background-color: #EFF3F5;
+    }
+  }
     .ant-select-selector{
       width: 100%;
       min-width: 350px;
-      background-color: #EFF3F5;
+      background-color: #EFF3F5 !important;
       outline: none;
-      border: none;
+      border: none !important;
       font-size: 24px;
       line-height: 36px;
       box-shadow: none !important;
