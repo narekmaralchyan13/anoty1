@@ -39,6 +39,7 @@ const Header = () => {
                 src={logo}
             />
             <Select
+                defaultValue={languageOptions[0]}
                 onChange={changeLanguage}
                 styles={selectStyles}
                 isSearchable={false}

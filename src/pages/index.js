@@ -6,8 +6,9 @@ import  "./index.css"
 import About from "../components/about"
 import Footer from "../components/footer";
 import './../18n'
-import {useTranslation} from "react-i18next";
-import DataContextProvider from "../dataContext/DataContextProvider";
+ import DataContextProvider from "../dataContext/DataContextProvider";
+import 'antd/dist/antd.css'
+
 
 
 

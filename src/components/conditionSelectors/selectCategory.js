@@ -3,7 +3,6 @@ import {useTranslation} from "react-i18next";
 import {DataContext} from "../../dataContext/DataContextProvider";
 import {selectCategory} from "../../recuders/dataReducer";
 import {Button, Divider, Input, Space,Select} from 'antd';
-import 'antd/dist/antd.css'
 import SSelect from "../styledComponents/styledSelect";
 
 
