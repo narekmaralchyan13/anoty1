@@ -59,12 +59,13 @@ const SelectAdditionalInfo = () => {
     return(
         <SSelect
             size='large'
-            maxTagCount={1}
+            maxTagCount='responsive'
             mode='multiple'
             value={additionalInfo.selected.map(op=>op.value)}
             onChange={changeAddInfo}
             showArrow
-            maxTagTextLength={8}
+
+            // maxTagTextLength={8}
             placeholder={t('Additional requirements')}
             dropdownRender={(menu) => (
                 <>
