@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {withTheme} from "styled-components";
 import {Carousel} from "antd";
 
  const SCarousel = styled(Carousel)`
@@ -8,4 +8,4 @@ import {Carousel} from "antd";
   }
 `
 
-export default SCarousel;
+export default withTheme(SCarousel);

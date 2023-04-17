@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled , {withTheme} from "styled-components";
 import {Select} from "antd";
 
 const SSelect = styled(Select)`
@@ -67,4 +67,4 @@ const SSelect = styled(Select)`
   }
 `
 
-export default SSelect
+export default withTheme(SSelect)
