@@ -1,8 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import * as styles from "./dateSelector.module.css";
 import Select from "react-select";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import {selectStyles} from "../../styles/selectStyles";
 import {useTranslation} from "react-i18next";
 import NextArrow from "../sliderArrows/nextArrow";
@@ -73,7 +71,7 @@ const DaySelector = ()=>{
     },[months.selected,years.selected])
 
     function changeDay(day){
-        setDays(prev=>{
+         setDays(prev=>{
             return {
                 ...prev,
                 selected: day
@@ -97,20 +95,6 @@ const DaySelector = ()=>{
             }
         })
     }
-
-    const sliderSettings = {
-        infinite: false,
-        slidesToShow: 7,
-        slidesToScroll: 7,
-        speed:500,
-        // initialSlide:days.selected.getDate()-days.selected.getDate()%7,
-        style: {
-            display: 'flex',
-            gap:'5px',
-        },
-        nextArrow:<NextArrow />,
-        prevArrow:<PrevArrow/>
-    };
 
     function handleClickDay(item,disabled){
         if(!disabled){
