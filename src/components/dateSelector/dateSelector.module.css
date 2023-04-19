@@ -1,6 +1,7 @@
 
 .dayContainer {
     min-width: 350px;
+    height: 150px;
     width: 30%;
     padding: 16px;
     background-color: #EFF3F5;
@@ -10,7 +11,6 @@
     justify-content: space-between;
     gap: 16px;
     align-items: center;
-    font-family: 'Montserrat';
 }
 
 .dateHeader{
@@ -33,7 +33,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 12px;
+    font-size: 100%;
 }
 .disabledDay{
     background-color: #C2C1C1;
@@ -56,6 +56,7 @@
 }
 .timeContainer{
     min-width: 350px;
+    height: 150px;
     width: 30%;
     padding: 16px;
     background-color: #EFF3F5;
@@ -64,7 +65,6 @@
     flex-direction: column;
     justify-content: space-around;
     gap:16px;
-    font-family: 'Montserrat';
 }
 .timeHead{
     width: 100%;
@@ -78,6 +78,7 @@ font-style: normal;
 font-weight: 400;
 font-size: 24px;
 line-height: 36px;
+
 }
 .timeBody{
     display: flex;
@@ -97,7 +98,7 @@ line-height: 36px;
     border:1px solid #C2C1C1 ;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 100%;
     line-height: 24px;
 
 }
@@ -110,7 +111,7 @@ line-height: 36px;
     background-color:#FFC629 ;
     border:1px solid #FFC629 ;
 }
-@media (max-width:450px) {
+@media (max-width:800px) {
     .dayContainer {
         width: 100%;
     }

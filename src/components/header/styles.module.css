@@ -4,10 +4,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 60px ;
+    padding: 3px 60px ;
     position: fixed;
     z-index: 5;
     top: 0;
+    height: 64px;
+    font-family: "ArtaruaMuihan-Regular", sans-serif !important;
+
 }
 
 .language{
@@ -17,5 +20,11 @@
     gap: 4px;
 }
 .logo{
-    height:64px;
+    height: 90%;
+}
+
+@media (max-width:450px) {
+    .logo {
+        height: 50%;
+    }
 }

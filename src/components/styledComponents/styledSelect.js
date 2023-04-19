@@ -1,6 +1,5 @@
 import styled , {withTheme} from "styled-components";
 import {Select} from "antd";
-
 const SSelect = styled(Select)`
   
   &.ant-select {
@@ -9,7 +8,7 @@ const SSelect = styled(Select)`
     border-radius: 20px;
     width: 30%;
     min-width: 350px;
-    @media (max-width: 458px) {
+    @media (max-width: 800px) {
       width: 100%;
       background-color: #EFF3F5;
     }
@@ -23,7 +22,7 @@ const SSelect = styled(Select)`
       font-size: 24px;
       line-height: 36px;
       box-shadow: none !important;
-      @media (max-width: 458px) {
+      @media (max-width: 800px) {
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;     

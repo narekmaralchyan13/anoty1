@@ -1,6 +1,5 @@
 .about {
     background-color: #565656;
-    font-family: Montserrat;
     padding: 48px 48px;
     color: white;
     font-size: 150%;
@@ -9,10 +8,9 @@
     letter-spacing: 0em;
     text-align: center;
 }
-@media (max-width:450px) {
+@media (max-width:800px) {
     .about {
         width: 100%;
-        font-family: Montserrat;
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;

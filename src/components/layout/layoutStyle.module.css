@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', serif
+    font-family: Montserrat, serif;
 }
 .content{
     background-color: white;

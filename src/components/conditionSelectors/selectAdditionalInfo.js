@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import SSelect from "../styledComponents/styledSelect";
-import {Input, Button, Space} from "antd";
+import {Input, Button, Space, Row, Col} from "antd";
 import {DataContext} from "../../dataContext/DataContextProvider";
 import {selectAdditionalInfo} from "../../recuders/dataReducer";
 
@@ -64,23 +64,26 @@ const SelectAdditionalInfo = () => {
             value={additionalInfo.selected.map(op=>op.value)}
             onChange={changeAddInfo}
             showArrow
-
-            // maxTagTextLength={8}
+            showSearch={false}
             placeholder={t('Additional requirements')}
             dropdownRender={(menu) => (
                 <>
                     {menu}
-                    <Space>
-                        <Input
-                            className={inputValue ? 'inputNotEmpty' :''}
-                            placeholder={t('+ Add other')}
-                            value={inputValue}
-                            onChange={handleChangeInputValue}
-                        />
-                        <Button type="primary" disabled={!inputValue} onClick={addCustomValue} >
-                            {t('Add')}
-                        </Button>
-                    </Space>
+                    <Row>
+                        <Col span={18}>
+                            <Input
+                                className={inputValue ? 'inputNotEmpty' :''}
+                                placeholder={t('+ Add other')}
+                                value={inputValue}
+                                onChange={handleChangeInputValue}
+                            />
+                        </Col>
+                        <Col span={6}>
+                            <Button type="primary" disabled={!inputValue} onClick={addCustomValue} >
+                                {t('Add')}
+                            </Button>
+                        </Col>
+                    </Row>
                 </>
             )}
             options={additionalInfo.options}

@@ -1,7 +1,6 @@
  export const selectStyles = {
     control: (base, state) => ({
         backgroundColor: 'white',
-        fontFamily: 'Montserrat',
         fontSize: '100%',
         lineHeight: '36px',
         fontWeight: '400',
@@ -12,13 +11,13 @@
         justifyContent:'space-between',
         border:'none',
         outline:'none',
+        borderRadius:'4px'
 
 
     }),
     option: (base, state) => ({
         ...base,
         backgroundColor:  state.isSelected ? "#EFF3F5" :"white",
-        fontFamily: 'Montserrat',
         color:  "black" ,
         fontSize: '16px',
         fontWeight: '400',
@@ -50,7 +49,6 @@
          backgroundColor: 'none',
          border: 'none',
          outline: 'none',
-         fontFamily: 'Montserrat',
          fontSize: '90%',
          fontWeight: '400',
          lineHeight: '36px',
@@ -77,7 +75,6 @@
          ...base,
          color:'black',
          backgroundColor: state.isDisabled ? 'orange':'white',
-         fontFamily: 'Montserrat',
          fontSize: '16px',
          fontWeight: '400',
          lineHeight: '24px',
@@ -131,7 +128,6 @@
      multiValueLabel: (base, state) => ({
          fontSize: '70%',
          fontWeight: '400',
-         fontFamily: 'Montserrat',
          color: 'white',
          lineHeight: '36px',
 

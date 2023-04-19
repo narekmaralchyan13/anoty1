@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {DataContext} from "../../dataContext/DataContextProvider";
 import {selectCategory} from "../../recuders/dataReducer";
-import {Button, Divider, Input, Space,Select} from 'antd';
+import {Button, Divider, Input, Space, Select, Row, Col} from 'antd';
 import SSelect from "../styledComponents/styledSelect";
 
 
@@ -68,24 +68,28 @@ const SelectCategory = () => {
             onClear = {handleClear}
             value={categories.selected?.label}
             onSelect={handleChangeCategory}
-            showSearch
+            showSearch={false}
             onDropdownVisibleChange={(visible) => setOpen(visible)}
             placeholder={t('Create or select category')+' *'}
             open={open}
             dropdownRender={(menu) => (
                 <>
                     {menu}
-                    <Space>
-                        <Input
-                            placeholder={t('+ Add other')}
-                            value={inputValue}
-                            onChange={handleChangeInputValue}
-                            // onBlur={addCustomValue}
-                        />
-                        <Button type="primary"  disabled={!inputValue} onClick={addCustomValue} >
-                            {t('Add')}
-                        </Button>
-                        </Space>
+                    <Row align='middle' justify='space-between'>
+                        <Col span={18}>
+                            <Input
+                                placeholder={t('+ Add other')}
+                                value={inputValue}
+                                onChange={handleChangeInputValue}
+                                // onBlur={addCustomValue}
+                            />
+                        </Col>
+                       <Col span={6}>
+                           <Button type="primary"  disabled={!inputValue} onClick={addCustomValue} >
+                               {t('Add')}
+                           </Button>
+                       </Col>
+                    </Row>
                 </>
             )}
             options={categories.options}

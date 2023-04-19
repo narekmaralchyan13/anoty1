@@ -2,12 +2,13 @@
     width: 100%;
     background-color: #FFC629 !important;
     outline: #FFC629;
-    color: black;
-    border: #FFC629;
+    color: black !important;
+    border: #FFC629 !important;
 }
+
 .ant-btn-primary:disabled {
     background-color: lightgray !important;
-
+    color: darkslategray !important;
 }
 .ant-input:focus{
     border-color: #FFC629;

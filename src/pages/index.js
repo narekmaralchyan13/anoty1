@@ -8,6 +8,7 @@ import Footer from "../components/footer";
 import './../18n'
  import DataContextProvider from "../dataContext/DataContextProvider";
 import 'antd/dist/antd.css'
+import {Helmet} from "react-helmet";
 
 
 
@@ -17,6 +18,10 @@ const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=de
 
 const IndexPage = () => {
     return (
+        <>
+            <Helmet>
+                <link href="https://www.dafontfree.net/embed/YXJ0YXJ1bWlhbmVyZXZhbi1yZWd1bGFyJmRhdGEvMzEvYS8xNTU3MTAvQXJUYXJ1bWlhbkVyZXZhbiBSZWd1bGFyLnR0Zg" rel="stylesheet" type="text/css" />
+            </Helmet>
         <Layout>
             <DataContextProvider>
                 <Form />
@@ -24,6 +29,7 @@ const IndexPage = () => {
             <About />
             <Footer />
         </Layout>
+    </>
     )
 }
 

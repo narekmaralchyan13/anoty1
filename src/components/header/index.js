@@ -1,7 +1,6 @@
 import * as React from "react"
-import { Link } from "gatsby"
 import * as styles from "./styles.module.css"
-import logo from './../../images/logo.svg'
+import logo from './../../images/logoWithname.svg'
 import armenianFlag from './../../images/armeniaFlag.svg'
 import gbFlag from './../../images/gbFlag.svg'
 import Select from "react-select";
