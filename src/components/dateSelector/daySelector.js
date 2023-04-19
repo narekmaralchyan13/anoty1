@@ -43,11 +43,16 @@ const DaySelector = ()=>{
         current:MonthsOptions.find(option=>option.value === new Date().getMonth()+1),
         selected:MonthsOptions.find(option=>option.value === new Date().getMonth()+1),
     })
-    const [days,setDays] = useState({
-        options:getDaysInMonth( years.selected.value, months.selected.value),
-        current:new Date().setHours(0,0,0,0,),
-        selected:new Date()
-    })
+    const [days,setDays] = useState()
+
+    useEffect(() => {
+        const initialDays = {
+            options:getDaysInMonth( years.selected.value, months.selected.value),
+            current:new Date().setHours(0,0,0,0,),
+            selected:new Date()
+        }
+        setDays(initialDays)
+    },[])
 
 
     useEffect(()=> {
@@ -127,28 +132,31 @@ const DaySelector = ()=>{
 
             </div>
             <div className={styles.days}>
-                <SCarousel
-                    arrows={true}
-                    nextArrow={<NextArrow />}
-                    prevArrow={<PrevArrow />}
-                    slidesToShow={7}
-                    slidesToScroll={7}
-                    initialSlide={ (new Date()).getDate()-1 }
-                    dots={false}
-                    draggable
-                    infinite={false}
-                >
-                    {
-                        days.options.map(item=>{
-                            const disabled = item < days.current
-                            const selected = item.setHours(0,0,0,0) === days.selected.setHours(0,0,0,0)
-                            return <div className={`${disabled ? styles.disabledDay:""} ${ selected ? styles.selectedDay:""} ${styles.dayItem}`}  key={item}
-                                           onClick={()=> handleClickDay(item,disabled)}>
-                                <p className={styles.dayText}>{t(item.toLocaleString('en', { weekday: 'short' }))}</p>
-                                <p className={styles.dayText}>{item.getDate()}</p>
-                            </div>
-                        })}
-                </SCarousel>
+                {days?.options && (
+                    <SCarousel
+                        arrows={true}
+                        nextArrow={<NextArrow />}
+                        prevArrow={<PrevArrow />}
+                        slidesToShow={7}
+                        slidesToScroll={7}
+                        initialSlide={ (new Date()).getDate()-1 }
+                        dots={false}
+                        draggable
+                        infinite={false}
+                    >
+                        {
+                            days?.options.map(item=>{
+                                const disabled = item < days.current
+                                const selected = item.setHours(0,0,0,0) === days.selected.setHours(0,0,0,0)
+                                return <div className={`${disabled ? styles.disabledDay:""} ${ selected ? styles.selectedDay:""} ${styles.dayItem}`}  key={item}
+                                            onClick={()=> handleClickDay(item,disabled)}>
+                                    <p className={styles.dayText}>{t(item.toLocaleString('en', { weekday: 'short' }))}</p>
+                                    <p className={styles.dayText}>{item.getDate()}</p>
+                                </div>
+                            })}
+                    </SCarousel>
+                )}
+
             </div>
 
         </div>

@@ -13,6 +13,31 @@ const SSelect = styled(Select)`
       background-color: #EFF3F5;
     }
   }
+  .ant-select-selection-overflow-item{
+    opacity: 1;
+    order: 1;
+    border-radius: 20px;
+    background-color: rgba(86, 86, 86, 1);
+    overflow: hidden;
+  .ant-select-selection-search{
+    display: none;
+  }
+    .anticon-close{
+      color: black;
+      background-color: white;
+      display: flex;
+      font-size: 16px;
+      padding: 2px;
+      border-radius: 100%;
+      align-items: center;
+    }
+    .ant-select-selection-item{
+      border: none;
+      background-color: inherit;
+      color: white;
+      align-items: center;
+    }
+  }
     .ant-select-selector{
       width: 100%;
       min-width: 350px;
@@ -39,8 +64,9 @@ const SSelect = styled(Select)`
       cursor: pointer;
       right: 16px;
       user-select: none;
-      width: 30px;
-      height: 30px;
+      width: 24px;
+      height: 24px;
+      font-size: 16px;
       background-color: black;
       color: white;
       display: flex;
