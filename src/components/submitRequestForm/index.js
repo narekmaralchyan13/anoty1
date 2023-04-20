@@ -71,11 +71,11 @@ const SubmitRequestForm = ({closeModal,sendEmail,modalState}) => {
               <p className={styles.infoText}>{t('Please fill your Email/Phone number. We will answer as soon, as we can.')}</p>
               <div className={styles.field}>
                   <span className={styles.filedName}>{t('Email')} *</span>
-                  <input placeholder={t('Type your Email address')} name='email' onChange={chnageInputValues} className={styles.fieldInput}/>
+                  <input placeholder={t('Type your Email address')} name='email' type='email' onChange={chnageInputValues} className={styles.fieldInput}/>
               </div>
               <div className={styles.field}>
                   <span className={styles.filedName}>{t('Phone')} *</span>
-                  <input placeholder={t('Type your Phone number')} name='phone' onChange={chnageInputValues} className={styles.fieldInput}/>
+                  <input placeholder={t('Type your Phone number')} type='number' name='phone' onChange={chnageInputValues} className={styles.fieldInput}/>
               </div>
               <div className={styles.field}>
                   <span className={styles.filedName}>{t('Message')}</span>
