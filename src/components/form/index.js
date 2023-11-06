@@ -63,7 +63,7 @@ const Form = () => {
         <FormHeader />
         <DateSeletcor/>
         <ConditionsSelect/>
-        <div>
+        <div className={styles.sendBtnWrapper}>
         <button
           className={styles.sendBtn}
           disabled={disable}
